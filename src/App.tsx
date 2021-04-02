@@ -1,10 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { routes } from './pages/routes';
+import GlobalStyle from './styles/global';
 
 function App() {
   return (
     <BrowserRouter>
+      <GlobalStyle />
       <Switch>
         {routes.map((route) => (
           <Route
