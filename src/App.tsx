@@ -1,20 +1,21 @@
 import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { routes } from './pages/routes';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Edit and save to reload.</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Learn Reacts
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        {routes.map((route) => (
+          <Route
+            key={route.name}
+            path={route.path}
+            exact
+            component={route.component}
+          />
+        ))}
+      </Switch>
+    </BrowserRouter>
   );
 }
 
