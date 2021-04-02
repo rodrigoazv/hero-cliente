@@ -7,7 +7,6 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  margin: auto;
   @media (max-width: 1600px) {
     max-width: 70%;
   }

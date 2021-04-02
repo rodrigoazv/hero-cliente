@@ -14,8 +14,8 @@ const Banner = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: auto 0;
-  width: 70%;
+  width: 50vw;
+  background-color: #313131;
 `;
 const Labels = styled.div`
   display: flex;
@@ -35,8 +35,12 @@ const Content = styled.div`
   width: 100%;
   height: 100vh;
 `;
+const LogoBanner = styled.img<PropsStyles>`
+  height: ${(p) => (p.size ? `${p.size}px` : '128px')};
+  margin: auto 0;
+`;
 const Logos = styled.img<PropsStyles>`
-  height: 128px;
+  height: ${(p) => (p.size ? `${p.size}px` : '128px')};
 `;
 const Main = styled.div`
   max-height: 100vh;
@@ -64,7 +68,7 @@ const Welcome: React.FC = () => {
         <Content>
           <Banner>
             <h2>Bem vindo !</h2>
-            <Logos size={333} src={Logo} />
+            <LogoBanner size={333} src={Logo} />
           </Banner>
           <Labels>
             <Logos src={Logo} />
@@ -80,7 +84,6 @@ const Welcome: React.FC = () => {
             ) : (
               <>
                 <Register />
-                <label>Antes de registrar leia os termos de condições</label>
                 <button type="button" onClick={() => setHaveAcount(true)}>
                   Login
                 </button>

@@ -22,4 +22,6 @@ export const InputText = styled.input`
  */
 export const FormDiv = styled.div`
   display: block;
+  border-radius: 4px;
+  padding: 5px;
 `;
