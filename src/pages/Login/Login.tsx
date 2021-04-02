@@ -1,12 +1,12 @@
 import React from 'react';
 import { Content } from './styles';
-import LoginC from '../../components/Auth/Login';
+import LoginPage from '../../components/Auth';
 /*
   Componentes styles
 */
 const Login: React.FC = () => (
   <Content>
-    <LoginC />
+    <LoginPage />
   </Content>
 );
 
