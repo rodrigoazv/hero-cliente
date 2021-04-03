@@ -166,6 +166,10 @@ export const Textarea = styled.textarea`
  */
 export const FormDiv = styled.div`
   display: flex;
+  margin: 30px 0;
   flex-direction: column;
   width: ${(p) => p.theme.screen.xxs};
+  @media (max-width: 1200px) {
+    width: ${(p) => p.theme.screen.tiny};
+  }
 `;

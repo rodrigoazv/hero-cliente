@@ -26,10 +26,14 @@ const Labels = styled.div`
   flex-direction: column;
   align-items: center;
   width: 800px;
-  padding: 180px 0 180px 150px;
+  padding: 100px 0 200px 150px;
+  @media (max-width: 1200px) {
+    padding: 100px 0 100px 0;
+  }
   span {
-    height: 10px;
-    padding: 10px;
+    padding: 3px;
+    margin: 3px 0px 5px 2px;
+    color: grey;
   }
   button {
     border: none;
@@ -46,6 +50,7 @@ const LogoBanner = styled.img<PropsStyles>`
   margin: auto 0;
 `;
 const Logos = styled.img<PropsStyles>`
+  margin: 20px 0;
   height: ${(p) => (p.size ? `${p.size}px` : '128px')};
 `;
 const Main = styled.div`

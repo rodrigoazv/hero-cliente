@@ -11,7 +11,12 @@ export enum UserTypes {
  * Data types
  */
 export interface User {
-  active: boolean;
+  email: string;
+  nickName: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+  birthDay: Date;
 }
 
 /**
