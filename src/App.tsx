@@ -1,20 +1,29 @@
 import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import { routes } from './pages/routes';
+import GlobalStyle from './styles/global';
+import FullThemeLight from './styles/themes/themes';
+import Snack from './components/Common/SnackBar';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Edit and save to reload.</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Learn Reacts
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={FullThemeLight}>
+      <BrowserRouter>
+        <Snack />
+        <GlobalStyle />
+        <Switch>
+          {routes.map((route) => (
+            <Route
+              key={route.name}
+              path={route.path}
+              exact
+              component={route.component}
+            />
+          ))}
+        </Switch>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
