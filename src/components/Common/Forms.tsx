@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-// prettier-ignore
 
 /**
  * Button
@@ -9,80 +8,80 @@ import styled from 'styled-components';
  * @param {boolean} disabled
  * @param {boolean} text, style button as a text
  */
-interface Props{
-    size?: keyof {
-        tiny: string;
-        xxs: string;
-        xs: string;
-        sm: string;
-        md: string;
-        lg: string;
-        xl: string;
-    },
-    color?: keyof{
-        white: string
-        success: string
-        body: string
+interface Props {
+  size?: keyof {
+    tiny: string;
+    xxs: string;
+    xs: string;
+    sm: string;
+    md: string;
+    lg: string;
+    xl: string;
+  };
+  color?: keyof {
+    white: string;
+    success: string;
+    body: string;
 
-        primary: {
-          light: string
-          main: string
-          dark: string
-          contrastText: string
-        },
+    primary: {
+      light: string;
+      main: string;
+      dark: string;
+      contrastText: string;
+    };
 
-        secondary: {
-          light: string,
-          main: string,
-          dark: string,
-          contrastText: string
-        },
+    secondary: {
+      light: string;
+      main: string;
+      dark: string;
+      contrastText: string;
+    };
 
-        text: {
-          primary: string
-          secondary: string,
-          disabled: string,
-          hint: string
-        },
+    text: {
+      primary: string;
+      secondary: string;
+      disabled: string;
+      hint: string;
+    };
 
-        border: {
-          light: string,
-          main: string,
-          dark: string
-        },
+    border: {
+      light: string;
+      main: string;
+      dark: string;
+    };
 
-        error: {
-          light: string,
-          main: string,
-          dark: string,
-          contrastText: string
-        },
+    error: {
+      light: string;
+      main: string;
+      dark: string;
+      contrastText: string;
+    };
 
-        warning: string,
+    warning: string;
 
-        info: string,
+    info: string;
 
-        grey: {
-          50: string,
-          100: string,
-          200: string,
-          300: string,
-          400: string,
-          500: string,
-          600: string,
-          700: string,
-          800: string,
-          900: string
-        }
-    },
-    weight?: keyof{
-        light: string;
-        normal: string;
-        bold: string;
-    },
-    text?: string,
-    ghost?: string,
-    fullWidth?: boolean,
+    grey: {
+      50: string;
+      100: string;
+      200: string;
+      300: string;
+      400: string;
+      500: string;
+      600: string;
+      700: string;
+      800: string;
+      900: string;
+    };
+  };
+  weight?: keyof {
+    light: string;
+    normal: string;
+    bold: string;
+  };
+  text?: string;
+  ghost?: string;
+  fullWidth?: boolean;
 }
 
 export const Button = styled.button<Props>`
@@ -166,10 +165,7 @@ export const Textarea = styled.textarea`
  * Form component
  */
 export const FormDiv = styled.div`
-  display: block;
-  border-radius: ${(p) => p.theme.radius.sm};
-  padding: ${(p) => p.theme.spacing.lg} ${(p) => p.theme.spacing.sm};
-  background-color: ${(p) => p.theme.dayNight.colors.background};
-  border-top: 1px solid ${(p) => p.theme.colors.border.main};
-  border-bottom: 1px solid ${(p) => p.theme.colors.border.main};
+  display: flex;
+  flex-direction: column;
+  width: ${(p) => p.theme.screen.xxs};
 `;

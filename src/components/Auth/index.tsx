@@ -15,7 +15,10 @@ const Banner = styled.div`
   align-items: center;
   flex-direction: column;
   width: 50vw;
-  background-color: #313131;
+  background-color: ${(p) => p.theme.colors.primary.main};
+  @media (max-width: 1200px) {
+    display: none;
+  }
 `;
 const Labels = styled.div`
   display: flex;

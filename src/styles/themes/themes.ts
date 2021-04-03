@@ -28,14 +28,13 @@ export default {
    * Colors
    */
   colors: {
-    black: '#000000',
+    black: '#313131',
     white: '#fff',
     success: '#34a853',
     body: '#fcfbfe',
-
     primary: {
       light: '#7986cb',
-      main: '#69DEA3',
+      main: '#313131',
       dark: '#303f9f',
       contrastText: '#fff',
     },
@@ -107,6 +106,8 @@ export default {
    * Breakpoints
    */
   screen: {
+    tiny: '280px',
+    xxs: '440px',
     xs: '540px',
     sm: '640px',
     md: '1007px',

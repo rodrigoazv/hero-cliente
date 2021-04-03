@@ -27,6 +27,7 @@ declare module 'styled-components' {
       white: string;
       success: string;
       body: string;
+      black: string;
 
       primary: {
         light: string;
@@ -100,6 +101,8 @@ declare module 'styled-components' {
      * Breakpoints
      */
     screen: {
+      tiny: string;
+      xxs: string;
       xs: string;
       sm: string;
       md: string;

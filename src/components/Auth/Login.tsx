@@ -27,7 +27,7 @@ const Login: React.FC = () => {
             as={InputText}
           />
           <span />
-          <Button type="submit" disabled={loading}>
+          <Button type="submit" disabled={loading} fullWidth>
             Entrar
           </Button>
         </FormDiv>
