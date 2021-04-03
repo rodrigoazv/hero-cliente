@@ -38,9 +38,14 @@ export default function CustomizedSnackbars() {
 
   return (
     <div className={classes.root}>
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+      <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+      >
         <Alert onClose={handleClose} severity={message.severity}>
-          This is a success message!
+          {message.message}
         </Alert>
       </Snackbar>
     </div>
