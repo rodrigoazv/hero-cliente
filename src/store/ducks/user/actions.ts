@@ -1,16 +1,26 @@
-import { action } from 'typesafe-actions';
+import { ThunkAction } from 'redux-thunk';
+import { Action, Dispatch } from 'redux';
 import { UserTypes, User, UserResponse } from './types';
 import { NotifyTypes } from '../notify/types';
 import { sendRegister } from './service';
+import { ApplicationState } from '../../index';
 
-export const sendRegisterAction = async (data: User) => {
-  action(NotifyTypes.SET_LOADING, true);
+export type AppThunk = ThunkAction<
+  void,
+  ApplicationState,
+  null,
+  Action<string>
+>;
+export const sendRegisterAction = (data: User) => async (
+  dispatch: Dispatch,
+) => {
+  dispatch({ type: NotifyTypes.SET_LOADING, payload: true });
   try {
     const respData: UserResponse = await sendRegister(data);
-    action(UserTypes.TOGGLE_MENU, respData.token);
+    dispatch({ type: UserTypes.TOGGLE_MENU, payload: respData.token });
   } catch (error) {
-    action(NotifyTypes.SET_MESSAGE);
+    dispatch({ type: NotifyTypes.SET_MESSAGE, payload: 'Error' });
   } finally {
-    action(NotifyTypes.SET_LOADING, false);
+    dispatch({ type: NotifyTypes.SET_LOADING, payload: false });
   }
 };

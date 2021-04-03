@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Field, Formik } from 'formik';
+import { useDispatch } from 'react-redux';
 import { Button, FormDiv, InputText } from '../Common/Forms';
 import { sendRegisterAction } from '../../store/ducks/user/actions';
 
@@ -19,9 +20,10 @@ interface RegisterForm {
   password: string;
 }
 const Register: React.FC = () => {
+  const dispatch = useDispatch();
   const initialValues: RegisterForm = { email: '', password: '' };
   const register = (values: any) => {
-    sendRegisterAction(values);
+    dispatch(sendRegisterAction(values));
   };
   return (
     <Formik
