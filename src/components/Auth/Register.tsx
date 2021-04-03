@@ -25,15 +25,23 @@ const Register: React.FC = () => (
       <FormDiv>
         <Field
           required
+          type="password"
           name="login"
-          placeholder="Teste"
+          placeholder="Qual seu @"
           component={InputText}
         />
         <span />
         <Field
           required
           name="login"
-          placeholder="Teste"
+          placeholder="Email"
+          component={InputText}
+        />
+        <span />
+        <Field
+          required
+          name="login"
+          placeholder="Senha"
           component={InputText}
         />
         <span />
@@ -41,11 +49,28 @@ const Register: React.FC = () => (
           required
           type="password"
           name="login"
-          placeholder="Teste"
+          placeholder="Primeiro nome"
           component={InputText}
         />
         <span />
-        <Button>Entrar</Button>
+        <Field
+          required
+          type="password"
+          name="login"
+          placeholder="Ultimo nome"
+          component={InputText}
+        />
+        <span />
+        <Field
+          required
+          type="password"
+          name="login"
+          placeholder="Nascimento"
+          component={InputText}
+        />
+        <span />
+
+        <Button fullWidth>Entrar</Button>
       </FormDiv>
     </Form>
   </Formik>

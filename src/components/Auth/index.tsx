@@ -26,10 +26,13 @@ const Labels = styled.div`
   flex-direction: column;
   align-items: center;
   width: 800px;
-  padding: 150px 0 150px 100px;
+  padding: 180px 0 180px 150px;
   span {
     height: 10px;
     padding: 10px;
+  }
+  button {
+    border: none;
   }
 `;
 const Content = styled.div`
@@ -79,17 +82,23 @@ const Welcome: React.FC = () => {
               <>
                 <h2>Bem vindo !</h2>
                 <Logins />
-                <label>Não tem conta ? sem problemas</label>
-                <button type="button" onClick={() => setHaveAcount(false)}>
-                  Não possuo uma conta
-                </button>
+                <label>
+                  Não tem conta ? sem problemas{' '}
+                  <button type="button" onClick={() => setHaveAcount(false)}>
+                    Não possuo uma conta
+                  </button>
+                </label>
               </>
             ) : (
               <>
+                <h2>Faça seu registro !</h2>
                 <Register />
-                <button type="button" onClick={() => setHaveAcount(true)}>
-                  Login
-                </button>
+                <label>
+                  Já possui conta ? sem problemas{' '}
+                  <button type="button" onClick={() => setHaveAcount(true)}>
+                    Login
+                  </button>
+                </label>
               </>
             )}
           </Labels>
