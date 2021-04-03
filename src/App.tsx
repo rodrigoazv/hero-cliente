@@ -4,11 +4,13 @@ import { ThemeProvider } from 'styled-components';
 import { routes } from './pages/routes';
 import GlobalStyle from './styles/global';
 import FullThemeLight from './styles/themes/themes';
+import Snack from './components/Common/SnackBar';
 
 function App() {
   return (
     <ThemeProvider theme={FullThemeLight}>
       <BrowserRouter>
+        <Snack />
         <GlobalStyle />
         <Switch>
           {routes.map((route) => (

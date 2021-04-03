@@ -19,7 +19,10 @@ export const sendRegisterAction = (data: User) => async (
     const respData: UserResponse = await sendRegister(data);
     dispatch({ type: UserTypes.TOGGLE_MENU, payload: respData.token });
   } catch (error) {
-    dispatch({ type: NotifyTypes.SET_MESSAGE, payload: 'Error' });
+    dispatch({
+      type: NotifyTypes.SET_MESSAGE,
+      payload: { severity: 'error', active: true, message: error },
+    });
   } finally {
     dispatch({ type: NotifyTypes.SET_LOADING, payload: false });
   }

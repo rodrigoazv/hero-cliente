@@ -12,12 +12,24 @@ export enum NotifyTypes {
  * Data types
  */
 export interface Notify {
-  active: boolean;
+  message: {
+    severity: 'success' | 'info' | 'warning' | 'error' | undefined;
+    active: boolean;
+    message: string;
+  };
+
+  loading: boolean;
 }
 
 /**
  * State type
  */
 export interface NotifyState {
-  active: boolean;
+  message: {
+    severity: 'success' | 'info' | 'warning' | 'error' | undefined;
+    active: boolean;
+    message: string;
+  };
+
+  loading: boolean;
 }
