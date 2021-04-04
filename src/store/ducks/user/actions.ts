@@ -1,6 +1,6 @@
 import { ThunkAction } from 'redux-thunk';
 import { Action, Dispatch } from 'redux';
-import { UserTypes, User, UserResponse } from './types';
+import { UserTypes, User, UserResponse, UserLogin } from './types';
 import { NotifyTypes } from '../notify/types';
 import { sendRegister, sendLogin } from './service';
 import { ApplicationState } from '../../index';
@@ -17,7 +17,7 @@ export const sendRegisterAction = (data: User) => async (
   dispatch({ type: NotifyTypes.SET_LOADING, payload: true });
   try {
     const respData: UserResponse = await sendRegister(data);
-    dispatch({ type: UserTypes.TOGGLE_MENU, payload: respData.token });
+    dispatch({ type: UserTypes.TOGGLE_REGISTER, payload: respData.data.token });
   } catch (error) {
     dispatch({
       type: NotifyTypes.SET_MESSAGE,
@@ -28,11 +28,14 @@ export const sendRegisterAction = (data: User) => async (
   }
 };
 
-export const sendLoginAction = (data: User) => async (dispatch: Dispatch) => {
+export const sendLoginAction = (data: UserLogin) => async (
+  dispatch: Dispatch,
+) => {
   dispatch({ type: NotifyTypes.SET_LOADING, payload: true });
+
   try {
     const respData: UserResponse = await sendLogin(data);
-    dispatch({ type: UserTypes.TOGGLE_MENU, payload: respData.token });
+    dispatch({ type: UserTypes.TOGGLE_LOGIN, payload: respData.data.token });
   } catch (error) {
     dispatch({
       type: NotifyTypes.SET_MESSAGE,

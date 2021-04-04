@@ -4,7 +4,8 @@
  * Action types
  */
 export enum UserTypes {
-  TOGGLE_MENU = '@menuactive/TOGGLE_MENU',
+  TOGGLE_REGISTER = '@useractive/TOGGLE_REGISTER',
+  TOGGLE_LOGIN = '@useractive/TOGGLE_LOGIN',
 }
 
 /**
@@ -18,12 +19,18 @@ export interface User {
   password: string;
   birthDay: Date;
 }
+export interface UserLogin {
+  email: string;
+  password: string;
+}
 
 /**
  * Data types
  */
 export interface UserResponse {
-  token: string;
+  data: {
+    token: string;
+  };
 }
 
 /**

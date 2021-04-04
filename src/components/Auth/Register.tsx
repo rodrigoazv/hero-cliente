@@ -51,7 +51,7 @@ const Register: React.FC = () => {
     lastName: '',
     birthDay: new Date(),
   };
-  const register = (values: any) => {
+  const register = (values: User) => {
     dispatch(sendRegisterAction(values));
   };
   return (
