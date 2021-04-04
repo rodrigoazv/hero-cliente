@@ -8,8 +8,10 @@ const INITIAL_STATE: UserState = {
 
 const reducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case UserTypes.TOGGLE_MENU:
-      return { ...state, token: action.payload.token };
+    case UserTypes.TOGGLE_REGISTER:
+      return { ...state, token: action.payload, auth: true };
+    case UserTypes.TOGGLE_LOGIN:
+      return { ...state, token: action.payload, auth: true };
     default:
       return state;
   }

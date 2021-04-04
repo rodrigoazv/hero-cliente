@@ -44,7 +44,6 @@ const Login: React.FC = () => {
               onChange={handleChange}
               value={values.email}
               error={touched.email && Boolean(errors.email)}
-              id="email"
             />
             <span>
               <ErrorMessage name="email" />
@@ -58,7 +57,6 @@ const Login: React.FC = () => {
               onChange={handleChange}
               value={values.password}
               error={touched.password && Boolean(errors.password)}
-              id="email"
             />
             <span>
               <ErrorMessage name="password" />
