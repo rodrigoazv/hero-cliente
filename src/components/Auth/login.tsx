@@ -25,8 +25,8 @@ const Login: React.FC = () => {
   const dispatch = useDispatch();
   const initialValues: LoginForm = { email: '', password: '' };
 
-  const login = (values: any) => {
-    dispatch(sendLoginAction(values));
+  const login = async (values: any) => {
+    await dispatch(sendLoginAction(values));
     history.push('/home');
   };
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { useSelector } from 'react-redux';
 import { routes } from './pages/routes';
@@ -10,6 +10,7 @@ import { ApplicationState } from './store';
 
 function App() {
   const { auth } = useSelector((state: ApplicationState) => state.user);
+
   return (
     <ThemeProvider theme={FullThemeLight}>
       <BrowserRouter>
@@ -17,7 +18,9 @@ function App() {
         <GlobalStyle />
         <Switch>
           {routes.map((route) =>
-            route.isProtected && !auth ? null : (
+            route.isProtected && !auth ? (
+              <Redirect to={{ pathname: '/' }} />
+            ) : (
               <Route
                 key={route.name}
                 path={route.path}
