@@ -8,7 +8,7 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
-import { Button, FormDiv } from '../Common/Forms';
+import { Button, FormDiv } from '../Common/forms';
 import { sendRegisterAction } from '../../store/ducks/user/actions';
 import { ApplicationState } from '../../store';
 import { User } from '../../store/ducks/user/types';

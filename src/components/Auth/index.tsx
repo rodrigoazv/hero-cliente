@@ -2,9 +2,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Logo from '../../styles/assets/logo.svg';
-import Logins from './Login';
-import Register from './Register';
-import { Container } from '../Common/Container';
+import Logins from './login';
+import Register from './register';
+import { Container } from '../Common/container';
 
 interface PropsStyles {
   size?: number;

@@ -1,5 +1,6 @@
 import React from 'react';
-import Login from './Login/Login';
+import Login from './Login/login';
+import HomePage from './HomePage/home-page';
 
 interface RouteDataItem {
   path?: string;
@@ -14,5 +15,11 @@ export const routes: RouteDataItem[] = [
     name: 'login',
     isProtected: false,
     component: Login,
+  },
+  {
+    path: '/home',
+    name: 'homepage',
+    isProtected: true,
+    component: HomePage,
   },
 ];
