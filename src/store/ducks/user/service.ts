@@ -8,7 +8,7 @@ const headers = {
 };
 export const sendRegister = async (user: User) => {
   const resp: UserResponse = await axios.post(
-    'http://localhost:3333/user/create',
+    `${process.env.API_URL}/user/create`,
     user,
     headers,
   );
@@ -17,7 +17,7 @@ export const sendRegister = async (user: User) => {
 
 export const sendLogin = async (user: UserLogin) => {
   const resp: UserResponse = await axios.post(
-    'http://localhost:3333/user/login',
+    `${process.env.API_URL}/user/login`,
     user,
     headers,
   );
