@@ -1,11 +1,12 @@
 import React from 'react';
 import { Content } from './styles';
 import Layout from '../../components/Layout';
+import MainPage from '../../components/MainPage';
 
 const Login: React.FC = () => (
   <Content>
     <Layout>
-      <h1>Eu</h1>
+      <MainPage />
     </Layout>
   </Content>
 );

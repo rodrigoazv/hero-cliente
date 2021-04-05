@@ -51,6 +51,7 @@ const LogoBanner = styled.img<PropsStyles>`
 `;
 const Logos = styled.img<PropsStyles>`
   margin: 20px 0;
+  color: ${(p) => p.theme.colors.primary.main};
   height: ${(p) => (p.size ? `${p.size}px` : '128px')};
 `;
 const Main = styled.div`
