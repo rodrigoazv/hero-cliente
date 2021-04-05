@@ -2,8 +2,9 @@ import React from 'react';
 import { Form, Formik, ErrorMessage } from 'formik';
 import TextField from '@material-ui/core/TextField';
 import * as yup from 'yup';
+import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, FormDiv } from '../Common/Forms';
+import { Button, FormDiv } from '../Common/forms';
 import { ApplicationState } from '../../store';
 import { sendLoginAction } from '../../store/ducks/user/actions';
 
@@ -19,12 +20,14 @@ const loginSchema = yup.object().shape({
   password: yup.string().required('Informe uma senha '),
 });
 const Login: React.FC = () => {
+  const history = useHistory();
   const { loading } = useSelector((state: ApplicationState) => state.notify);
   const dispatch = useDispatch();
   const initialValues: LoginForm = { email: '', password: '' };
 
-  const login = (values: any) => {
-    dispatch(sendLoginAction(values));
+  const login = async (values: any) => {
+    await dispatch(sendLoginAction(values));
+    history.push('/home');
   };
   return (
     <Formik

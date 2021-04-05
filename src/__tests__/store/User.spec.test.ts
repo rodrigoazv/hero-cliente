@@ -21,11 +21,9 @@ describe('actions', () => {
   });
   it('should create all actions instances for user login', async () => {
 
-  
     (axios.post as jest.MockedFunction<typeof axios.post>).mockResolvedValueOnce({
       data: { token: 'jwt-example' }
     });
-
 
     const initialState = {}
     const store = mockStore(initialState)
@@ -41,12 +39,10 @@ describe('actions', () => {
     
   })
   it('should create all actions instances for user register', async () => {
-
   
     (axios.post as jest.MockedFunction<typeof axios.post>).mockResolvedValueOnce({
       data: { token: 'jwt-example' }
     });
-
 
     const initialState = {}
     const store = mockStore(initialState)

@@ -33,9 +33,9 @@ export default {
     success: '#34a853',
     body: '#fcfbfe',
     primary: {
-      light: '#7986cb',
-      main: '#313131',
-      dark: '#303f9f',
+      light: 'rgba(66, 236, 154)',
+      main: 'rgba(66, 236, 154)',
+      dark: 'rgba(66, 236, 154)',
       contrastText: '#fff',
     },
 

@@ -2,9 +2,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Logo from '../../styles/assets/logo.svg';
-import Logins from './Login';
-import Register from './Register';
-import { Container } from '../Common/Container';
+import Logins from './login';
+import Register from './register';
+import { ContainerLogin } from '../Common/container';
 
 interface PropsStyles {
   size?: number;
@@ -27,8 +27,8 @@ const Labels = styled.div`
   align-items: center;
   width: 800px;
   padding: 100px 0 200px 150px;
-  @media (max-width: 1200px) {
-    padding: 100px 0 100px 0;
+  @media (max-width: 1400px) {
+    padding: 100px 100px 100px 0;
   }
   span {
     padding: 3px;
@@ -51,6 +51,7 @@ const LogoBanner = styled.img<PropsStyles>`
 `;
 const Logos = styled.img<PropsStyles>`
   margin: 20px 0;
+  color: ${(p) => p.theme.colors.primary.main};
   height: ${(p) => (p.size ? `${p.size}px` : '128px')};
 `;
 const Main = styled.div`
@@ -74,7 +75,7 @@ const Main = styled.div`
 const Welcome: React.FC = () => {
   const [haveAcount, setHaveAcount] = useState(true);
   return (
-    <Container>
+    <ContainerLogin>
       <Main>
         <Content>
           <Banner>
@@ -109,7 +110,7 @@ const Welcome: React.FC = () => {
           </Labels>
         </Content>
       </Main>
-    </Container>
+    </ContainerLogin>
   );
 };
 export default Welcome;
