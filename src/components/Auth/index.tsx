@@ -27,8 +27,8 @@ const Labels = styled.div`
   align-items: center;
   width: 800px;
   padding: 100px 0 200px 150px;
-  @media (max-width: 1200px) {
-    padding: 100px 0 100px 0;
+  @media (max-width: 1400px) {
+    padding: 100px 100px 100px 0;
   }
   span {
     padding: 3px;

@@ -12,12 +12,11 @@ interface PropsStyles {
   size?: number;
 }
 
-export const NavBar = styled.div`
+export const NavBar = styled.header`
   height: 80px;
   width: 100%;
   color: #333;
   background-color: #313131;
-  padding: 0 200px;
   align-items: center;
 `;
 
