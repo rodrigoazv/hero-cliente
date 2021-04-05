@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Logo from '../../styles/assets/logo.svg';
 import Logins from './login';
 import Register from './register';
-import { Container } from '../Common/container';
+import { ContainerLogin } from '../Common/container';
 
 interface PropsStyles {
   size?: number;
@@ -74,7 +74,7 @@ const Main = styled.div`
 const Welcome: React.FC = () => {
   const [haveAcount, setHaveAcount] = useState(true);
   return (
-    <Container>
+    <ContainerLogin>
       <Main>
         <Content>
           <Banner>
@@ -109,7 +109,7 @@ const Welcome: React.FC = () => {
           </Labels>
         </Content>
       </Main>
-    </Container>
+    </ContainerLogin>
   );
 };
 export default Welcome;

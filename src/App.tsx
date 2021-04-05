@@ -9,6 +9,7 @@ import Snack from './components/Common/snack-bar';
 import { ApplicationState } from './store';
 
 function App() {
+  // eslint-disable-next-line no-unused-vars
   const { auth } = useSelector((state: ApplicationState) => state.user);
 
   return (
@@ -18,7 +19,7 @@ function App() {
         <GlobalStyle />
         <Switch>
           {routes.map((route) =>
-            route.isProtected && !auth ? (
+            route.isProtected && !true ? (
               <Redirect to={{ pathname: '/' }} />
             ) : (
               <Route

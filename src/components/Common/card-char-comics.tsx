@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-
-import NavBar from './nav-bar';
+import { ContainerLayout } from '../Common/container';
 
 /*
   Componentes props
@@ -12,9 +11,8 @@ import NavBar from './nav-bar';
   @TEX
 */
 const HomePage: React.FC = () => (
-  <NavBar>
+  <ContainerLayout>
     <h1>Oi</h1>
-    Olá
-  </NavBar>
+  </ContainerLayout>
 );
 export default HomePage;
