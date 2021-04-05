@@ -5,7 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import Apresentation from './apresentation';
 import Tabs from '../Common/tabs';
 import SearchLocal from './local-search';
-// import { PropsTab } from '../Common/types';
+import CardCharMapped from './card-char-mapped';
+import CardComicsMapped from './card-comics-mapped';
 
 const Content = styled.div`
   display: flex;
@@ -13,24 +14,35 @@ const Content = styled.div`
 `;
 
 const TabsComponents = [
-  { label: 'Char', searchUrl: '/char', component: <h1>oi</h1> },
-  { label: 'Comics', searchUrl: '/Comics', component: <h1>oi</h1> },
+  {
+    label: 'Char',
+    searchUrl: '/char',
+    component: <CardCharMapped />,
+  },
+  {
+    label: 'Comics',
+    searchUrl: '/Comics',
+    component: <CardComicsMapped />,
+  },
 ];
 /*
   MAIN
   @TEX
 */
-const HomePage: React.FC = () => (
-  <Content>
-    <Apresentation />
-    <Grid container spacing={0}>
-      <Grid item xs={12} sm={6}>
-        <Tabs customTabs={TabsComponents} />
+const HomePage: React.FC = () => {
+  console.log('oi');
+  return (
+    <Content>
+      <Apresentation />
+      <Grid container spacing={0}>
+        <Grid item xs={12} sm={6}>
+          <Tabs customTabs={TabsComponents} />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <SearchLocal />
+        </Grid>
       </Grid>
-      <Grid item xs={12} sm={6}>
-        <SearchLocal />
-      </Grid>
-    </Grid>
-  </Content>
-);
+    </Content>
+  );
+};
 export default HomePage;
