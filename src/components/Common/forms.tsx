@@ -130,7 +130,7 @@ export const Button = styled.button<Props>`
  */
 export const InputText = styled.input`
   outline: 0;
-  height: 36px;
+  height: 40px;
   width: 100%;
   border: 1px solid ${(p) => p.theme.dayNight.colors.secondaryteen};
   border-radius: ${(p) => p.theme.radius.sm};

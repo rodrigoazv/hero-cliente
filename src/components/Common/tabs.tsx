@@ -9,7 +9,9 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import { useDispatch } from 'react-redux';
 import { StyledTabsProps, TabPanelProps, PropsTab } from './types';
+import { setLocalSearch } from '../../store/ducks/local/actions';
 
 interface CustomTabs {
   customTabs: PropsTab[];
@@ -93,9 +95,13 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const CustomizedTabs: React.FC<CustomTabs> = ({ customTabs }: CustomTabs) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+    dispatch(
+      setLocalSearch({ name: customTabs[newValue].label, url: 'char/url' }),
+    );
     setValue(newValue);
   };
 
