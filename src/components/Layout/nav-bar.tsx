@@ -16,13 +16,13 @@ export const NavBar = styled.header`
   height: 80px;
   width: 100%;
   color: #333;
-  background-color: #313131;
+  background-color: ${(p) => p.theme.colors.black};
   align-items: center;
 `;
 
 const GroupAvatar = styled.div`
   height: auto;
-  color: #fff;
+  color: ${(p) => p.theme.colors.white};
   display: flex;
   justify-content: space-between;
   align-items: center;

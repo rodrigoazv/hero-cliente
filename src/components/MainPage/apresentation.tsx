@@ -8,6 +8,7 @@ const Content = styled.section`
   margin: 50px 0;
   width: 100%;
   h1 {
+    width: 50%;
     font-size: 50px;
     b {
       color: ${(p) => p.theme.colors.primary.main};

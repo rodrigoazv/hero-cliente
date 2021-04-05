@@ -20,9 +20,18 @@ const AvatarSize = styled.button<Props>`
   font-weight: normal;
   white-space: normal;
   padding: 12px 24px;
-  border: 1px solid rgb(188, 200, 214);
-  background-color: rgb(255, 255, 255);
-  color: rgb(32, 37, 42);
+  border: 1px solid ${(p) => p.theme.colors.black};
+  background-color: ${(p) => p.theme.colors.primary.main};
+  color: ${(p) => p.theme.colors.black};
+  font-weight: bold;
+  :hover {
+    border: 1px solid ${(p) => p.theme.colors.primary.main};
+    background-color: ${(p) => p.theme.colors.black};
+    color: ${(p) => p.theme.colors.primary.main};
+    -webkit-box-shadow: 0px 0px 18px -7px rgba(105, 222, 163, 1);
+    -moz-box-shadow: 0px 0px 18px -7px rgba(105, 222, 163, 1);
+    box-shadow: 0px 0px 18px -7px rgba(105, 222, 163, 1);
+  }
 `;
 
 /*
