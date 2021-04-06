@@ -4,7 +4,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 const Loading = styled.div`
   margin: 0 auto;
-  padding: 50px 0;
+  padding: 100px 0;
 `;
 export default function CircularIndeterminate() {
   return (

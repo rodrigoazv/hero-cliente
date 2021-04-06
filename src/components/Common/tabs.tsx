@@ -128,9 +128,11 @@ const CustomizedTabs: React.FC<CustomTabs> = ({
         {children}
       </div>
       {customTabs.map((tab, index) => (
-        <TabPanel value={value} index={index}>
-          {tab.component}
-        </TabPanel>
+        <>
+          <TabPanel value={value} index={index}>
+            {tab.component}
+          </TabPanel>
+        </>
       ))}
     </div>
   );

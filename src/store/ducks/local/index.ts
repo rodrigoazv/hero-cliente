@@ -3,7 +3,7 @@ import { LocalState, LocalTypes } from './types';
 
 const INITIAL_STATE: LocalState = {
   search: {
-    name: '',
+    name: 'Char',
     url: '',
   },
 };

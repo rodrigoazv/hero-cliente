@@ -45,17 +45,17 @@ export interface ComicsResponse {
  */
 export interface CharComicsState {
   comics: {
-    offset: Number;
-    limit: Number;
-    total: Number;
-    count: Number;
+    offset: number;
+    limit: number;
+    total: number;
+    count: number;
     results: [];
   };
   char: {
-    offset: Number;
-    limit: Number;
-    total: Number;
-    count: Number;
+    offset: number;
+    limit: number;
+    total: number;
+    count: number;
     results: [];
   };
 }
