@@ -22,4 +22,16 @@ export const routes: RouteDataItem[] = [
     isProtected: true,
     component: HomePage,
   },
+  {
+    path: '/comics/:id',
+    name: 'comics',
+    isProtected: true,
+    component: HomePage,
+  },
+  {
+    path: '/char/:id',
+    name: 'char',
+    isProtected: true,
+    component: HomePage,
+  },
 ];

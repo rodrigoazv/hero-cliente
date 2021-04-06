@@ -10,7 +10,7 @@ export default createGlobalStyle`
         background: #fff;
         font-size: 14px;
         color: #333;
-        font-family: sans-serif;
+        font-family: 'Open Sans Condensed', sans-serif;
     }
     a{
         cursor: pointer;

@@ -40,9 +40,9 @@ export default {
     },
 
     secondary: {
-      light: '#ff4081',
-      main: '#f50057',
-      dark: '#c51162',
+      light: '#333',
+      main: '#333',
+      dark: '#333',
       contrastText: '#fff',
     },
 

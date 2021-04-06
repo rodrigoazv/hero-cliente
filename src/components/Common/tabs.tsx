@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactChild } from 'react';
 import {
   makeStyles,
   withStyles,
@@ -7,14 +7,15 @@ import {
 } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { useDispatch } from 'react-redux';
+
 import { StyledTabsProps, TabPanelProps, PropsTab } from './types';
 import { setLocalSearch } from '../../store/ducks/local/actions';
 
 interface CustomTabs {
   customTabs: PropsTab[];
+  children: ReactChild;
 }
 
 const StyledTabs = withStyles({
@@ -49,11 +50,7 @@ function TabPanel(props: TabPanelProps) {
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...other}
     >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <Box>{children}</Box>}
     </div>
   );
 }
@@ -83,6 +80,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: theme.spacing(3),
   },
   demo: {
+    width: '50%',
     '& button': {
       fontWeight: 1000,
       color: '#333',
@@ -92,9 +90,16 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     backgroundColor: 'rgba(66,236,154);',
   },
+  flexi: {
+    display: 'flex',
+    width: '100%',
+  },
 }));
 
-const CustomizedTabs: React.FC<CustomTabs> = ({ customTabs }: CustomTabs) => {
+const CustomizedTabs: React.FC<CustomTabs> = ({
+  customTabs,
+  children,
+}: CustomTabs) => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -107,22 +112,27 @@ const CustomizedTabs: React.FC<CustomTabs> = ({ customTabs }: CustomTabs) => {
 
   return (
     <div className={classes.root}>
-      <div className={classes.demo}>
-        <StyledTabs
-          variant="fullWidth"
-          value={value}
-          onChange={handleChange}
-          aria-label="styled tabs example"
-        >
-          {customTabs.map((tab) => (
-            <StyledTab label={tab.label} />
-          ))}
-        </StyledTabs>
+      <div className={classes.flexi}>
+        <div className={classes.demo}>
+          <StyledTabs
+            variant="fullWidth"
+            value={value}
+            onChange={handleChange}
+            aria-label="styled tabs example"
+          >
+            {customTabs.map((tab) => (
+              <StyledTab label={tab.label} />
+            ))}
+          </StyledTabs>
+        </div>
+        {children}
       </div>
       {customTabs.map((tab, index) => (
-        <TabPanel value={value} index={index}>
-          {tab.component}
-        </TabPanel>
+        <>
+          <TabPanel value={value} index={index}>
+            {tab.component}
+          </TabPanel>
+        </>
       ))}
     </div>
   );
