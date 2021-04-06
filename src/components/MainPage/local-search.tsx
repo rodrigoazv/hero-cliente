@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getCharsAction } from 'src/store/ducks/char-comics/actions';
+import { getSearch } from 'src/store/ducks/char-comics/actions';
 import { InputText } from '../Common/forms';
 import { ApplicationState } from '../../store';
 
@@ -23,9 +23,16 @@ const Content = styled.div`
 const SearchLocal: React.FC = () => {
   const dispatch = useDispatch();
   const { search } = useSelector((state: ApplicationState) => state.local);
+
   const searchAction = (event: any) => {
-    dispatch(getCharsAction(event.target.value));
+    const searchVal = {
+      searchUrl: search.url,
+      searchType: search.name,
+      valueSearch: event.target.value,
+    };
+    dispatch(getSearch(searchVal));
   };
+
   return (
     <Content>
       <InputText

@@ -11,6 +11,12 @@ export enum CharComicsTypes {
 /**
  * Data types
  */
+export interface SearchType {
+  searchType: string;
+  searchUrl: string;
+  valueSearch: string;
+}
+
 export interface CharResponse {
   data: {
     char: {
