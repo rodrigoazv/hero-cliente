@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import React from 'react';
 import Apresentation from './apresentation';
 import Tabs from '../Common/tabs';
+import SearchLocal from './local-search';
 import CardCharMapped from './card-char-mapped';
 import CardComicsMapped from './card-comics-mapped';
-import SearchLocal from './local-search';
 
 const Content = styled.div`
   display: flex;

@@ -11,10 +11,12 @@ export type AppThunk = ThunkAction<
   null,
   Action<string>
 >;
-export const getCharsAction = () => async (dispatch: Dispatch) => {
+export const getCharsAction = (search?: string) => async (
+  dispatch: Dispatch,
+) => {
   dispatch({ type: NotifyTypes.SET_LOADING, payload: true });
   try {
-    const respData: CharResponse = await getChars();
+    const respData: CharResponse = await getChars(search);
     dispatch({
       type: CharComicsTypes.TOGGLE_CHAR,
       payload: respData.data.char,
@@ -33,10 +35,12 @@ export const getCharsAction = () => async (dispatch: Dispatch) => {
   }
 };
 
-export const getComicsAction = () => async (dispatch: Dispatch) => {
+export const getComicsAction = (search?: string) => async (
+  dispatch: Dispatch,
+) => {
   dispatch({ type: NotifyTypes.SET_LOADING, payload: true });
   try {
-    const respData: ComicsResponse = await getComics();
+    const respData: ComicsResponse = await getComics(search);
     dispatch({
       type: CharComicsTypes.TOGGLE_COMICS,
       payload: respData.data.comics,

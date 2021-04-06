@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import styled from 'styled-components';
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { getCharsAction } from 'src/store/ducks/char-comics/actions';
 import { InputText } from '../Common/forms';
 import { ApplicationState } from '../../store';
 
@@ -20,9 +21,10 @@ const Content = styled.div`
   @TEX
 */
 const SearchLocal: React.FC = () => {
+  const dispatch = useDispatch();
   const { search } = useSelector((state: ApplicationState) => state.local);
   const searchAction = (event: any) => {
-    console.log(`${search.url}${event.target.value}`);
+    dispatch(getCharsAction(event.target.value));
   };
   return (
     <Content>
