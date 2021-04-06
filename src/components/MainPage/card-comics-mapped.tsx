@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ApplicationState } from '../../store';
 import { getComicsAction } from '../../store/ducks/char-comics/actions';
 import Card from '../Common/card-char-comics';
+import Loading from '../Common/loading';
 
 const Content = styled.div`
   display: flex;
@@ -45,7 +46,7 @@ const SearchLocal: React.FC = () => {
   return (
     <Content>
       {loading ? (
-        <h1>Carregando</h1>
+        <Loading />
       ) : (
         <CardContent>
           {comics.results.map((c: Char) => (

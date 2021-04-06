@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactChild } from 'react';
 import {
   makeStyles,
   withStyles,
@@ -12,10 +12,10 @@ import { useDispatch } from 'react-redux';
 
 import { StyledTabsProps, TabPanelProps, PropsTab } from './types';
 import { setLocalSearch } from '../../store/ducks/local/actions';
-import SearchLocal from '../MainPage/local-search';
 
 interface CustomTabs {
   customTabs: PropsTab[];
+  children: ReactChild;
 }
 
 const StyledTabs = withStyles({
@@ -96,7 +96,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const CustomizedTabs: React.FC<CustomTabs> = ({ customTabs }: CustomTabs) => {
+const CustomizedTabs: React.FC<CustomTabs> = ({
+  customTabs,
+  children,
+}: CustomTabs) => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -122,7 +125,7 @@ const CustomizedTabs: React.FC<CustomTabs> = ({ customTabs }: CustomTabs) => {
             ))}
           </StyledTabs>
         </div>
-        <SearchLocal />
+        {children}
       </div>
       {customTabs.map((tab, index) => (
         <TabPanel value={value} index={index}>

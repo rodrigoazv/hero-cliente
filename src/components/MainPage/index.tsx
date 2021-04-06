@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import styled from 'styled-components';
 import React from 'react';
@@ -5,6 +6,7 @@ import Apresentation from './apresentation';
 import Tabs from '../Common/tabs';
 import CardCharMapped from './card-char-mapped';
 import CardComicsMapped from './card-comics-mapped';
+import SearchLocal from './local-search';
 
 const Content = styled.div`
   display: flex;
@@ -32,7 +34,7 @@ const HomePage: React.FC = () => {
   return (
     <Content>
       <Apresentation />
-      <Tabs customTabs={TabsComponents} />
+      <Tabs customTabs={TabsComponents} children={<SearchLocal />} />
     </Content>
   );
 };
