@@ -4,11 +4,20 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ApplicationState } from '../../store';
 import { getCharsAction } from '../../store/ducks/char-comics/actions';
+import Card from '../Common/card-char-comics';
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-  max-height: 48px;
+  height: 100%;
+  padding: 10px 0;
+`;
+
+const CardContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
   height: 100%;
   padding: 10px 0;
 `;
@@ -19,6 +28,10 @@ const Content = styled.div`
 */
 interface Char {
   name: string;
+  thumbnail: {
+    extension: string;
+    path: string;
+  };
 }
 const SearchLocal: React.FC = () => {
   const dispatch = useDispatch();
@@ -34,7 +47,15 @@ const SearchLocal: React.FC = () => {
       {loading ? (
         <h1>Carregando</h1>
       ) : (
-        char.results.map((c: Char) => <h1>{c.name}</h1>)
+        <CardContent>
+          {char.results.map((c: Char) => (
+            <Card
+              title={c.name}
+              description={c.name}
+              image={`${c.thumbnail.path}.${c.thumbnail.extension}`}
+            />
+          ))}
+        </CardContent>
       )}
     </Content>
   );

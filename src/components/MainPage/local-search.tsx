@@ -12,6 +12,7 @@ const Content = styled.div`
   height: 100%;
   background: ${(p) => p.theme.colors.primary.main};
   padding: 10px 30px;
+  width: 50%;
 `;
 
 /*
