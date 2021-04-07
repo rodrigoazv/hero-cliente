@@ -54,7 +54,7 @@ const Favorit = styled.button`
 const TabsComponents = [
   {
     label: 'Characters',
-    component: <StyleIntoTab type="series" />,
+    component: <StyleIntoTab type="char" linked />,
   },
   {
     label: 'Story',

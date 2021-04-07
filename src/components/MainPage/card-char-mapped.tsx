@@ -42,7 +42,7 @@ export interface Char {
     extension: string;
     path: string;
   };
-  series: { items: [] };
+  comics: { items: [] };
   stories: { items: [] };
 }
 
