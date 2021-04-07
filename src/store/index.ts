@@ -1,6 +1,8 @@
 import { createStore, Store, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import rootReducer from './ducks';
 import { UserState } from './ducks/user/types';
 import { NotifyState } from './ducks/notify/types';
@@ -14,9 +16,17 @@ export interface ApplicationState {
   charcomics: CharComicsState;
 }
 
-const store: Store<ApplicationState | any> = createStore(
-  rootReducer,
+const persistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['user'],
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store: Store<ApplicationState | any> = createStore(
+  persistedReducer,
   composeWithDevTools(applyMiddleware(thunk)),
 );
 
-export default store;
+export const persistor = persistStore(store);

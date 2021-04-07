@@ -28,6 +28,7 @@ export interface NotifyState {
   message: {
     severity: 'success' | 'info' | 'warning' | 'error' | undefined;
     active: boolean;
+    errorType: 'auth' | string;
     message: string;
   };
 

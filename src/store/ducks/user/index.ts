@@ -12,6 +12,8 @@ const reducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
       return { ...state, token: action.payload, auth: true };
     case UserTypes.TOGGLE_LOGIN:
       return { ...state, token: action.payload, auth: true };
+    case UserTypes.TOGGLE_LOGOUT:
+      return { ...state, token: action.payload, auth: false };
     default:
       return state;
   }

@@ -3,8 +3,10 @@ import { User, UserResponse, UserLogin } from './types';
 
 const headers = {
   headers: {
+    'Access-Control-Allow-Credentials': true,
     'Content-Type': 'application/json',
   },
+  withCredentials: true,
 };
 export const sendRegister = async (user: User) => {
   const resp: UserResponse = await axios.post(

@@ -6,6 +6,7 @@
 export enum UserTypes {
   TOGGLE_REGISTER = '@useractive/TOGGLE_REGISTER',
   TOGGLE_LOGIN = '@useractive/TOGGLE_LOGIN',
+  TOGGLE_LOGOUT = '@useractive/TOGGLE_LOGOUT',
 }
 
 /**
