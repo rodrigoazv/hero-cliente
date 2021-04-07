@@ -8,6 +8,8 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
+import Cookies from 'js-cookie';
+import { useHistory } from 'react-router';
 import { Button, FormDiv } from '../Common/forms';
 import { sendRegisterAction } from '../../store/ducks/user/actions';
 import { ApplicationState } from '../../store';
@@ -43,6 +45,7 @@ const registerSchema = yup.object().shape({
 const Register: React.FC = () => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state: ApplicationState) => state.notify);
+  const history = useHistory();
   const initialValues: User = {
     email: '',
     password: '',
@@ -53,6 +56,9 @@ const Register: React.FC = () => {
   };
   const register = (values: User) => {
     dispatch(sendRegisterAction(values));
+    if (Cookies.get('authorization') !== '') {
+      history.push('/home');
+    }
   };
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
