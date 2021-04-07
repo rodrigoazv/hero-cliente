@@ -32,6 +32,7 @@ export const getCharsAction = (search?: string, page?: number) => async (
       payload: {
         severity: 'error',
         active: true,
+        errorType: error.response.data.error.type,
         message: error.response?.data.error.message || 'opps',
       },
     });
@@ -54,6 +55,7 @@ export const getCharsIdAction = (id: string) => async (dispatch: Dispatch) => {
       payload: {
         severity: 'error',
         active: true,
+        errorType: error.response?.data.error.type,
         message: error.response?.data.error.message || 'opps',
       },
     });
@@ -78,6 +80,7 @@ export const getComicsAction = (search?: string, page?: number) => async (
       payload: {
         severity: 'error',
         active: true,
+        errorType: error.response.data.error.type,
         message: error.response?.data.error.message || 'opps',
       },
     });
@@ -100,6 +103,7 @@ export const getComicsIdAction = (id: string) => async (dispatch: Dispatch) => {
       payload: {
         severity: 'error',
         active: true,
+        errorType: error.response.data.error.type,
         message: error.response?.data.error.message || 'opps',
       },
     });
@@ -131,6 +135,7 @@ export const getSearch = (search: SearchType) => async (dispatch: Dispatch) => {
       payload: {
         severity: 'error',
         active: true,
+        errorType: error.response.data.error.type,
         message: error.response?.data.error.message || 'opps',
       },
     });

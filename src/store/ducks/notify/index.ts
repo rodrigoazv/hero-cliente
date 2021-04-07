@@ -5,6 +5,7 @@ const INITIAL_STATE: NotifyState = {
   message: {
     severity: 'info',
     active: false,
+    errorType: '',
     message: '',
   },
 
