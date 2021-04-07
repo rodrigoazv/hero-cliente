@@ -16,6 +16,6 @@ export interface StyledTabsProps {
 
 export interface PropsTab {
   label: string;
-  searchUrl: string;
+  searchUrl?: string;
   component: ReactChild;
 }

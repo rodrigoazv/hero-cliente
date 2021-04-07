@@ -54,12 +54,12 @@ const Favorit = styled.button`
 const TabsComponents = [
   {
     label: 'Series',
-    searchUrl: '/Series',
+
     component: <StyleIntoTab type="series" />,
   },
   {
     label: 'Story',
-    searchUrl: '/Story',
+
     component: <StyleIntoTab type="stories" />,
   },
 ];
