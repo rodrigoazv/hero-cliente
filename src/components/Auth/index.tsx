@@ -15,7 +15,7 @@ const Banner = styled.div`
   align-items: center;
   flex-direction: column;
   width: 50vw;
-  background-color: ${(p) => p.theme.colors.primary.main};
+  background-color: ${(p) => p.theme.colors.secondary.main};
   @media (max-width: 1200px) {
     display: none;
   }

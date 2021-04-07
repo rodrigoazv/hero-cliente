@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Logo from '../../styles/assets/logo.svg';
 import Avatar from '../Common/avatar';
@@ -50,7 +51,10 @@ const HomePage: React.FC = () => (
       <GroupMessage>
         <b>Bem vindo</b> ao Super!
       </GroupMessage>
-      <Logos src={Logo} />
+      <Link to="/home">
+        <Logos src={Logo} />
+      </Link>
+
       <GroupAvatar>
         <Avatar size={48} />
       </GroupAvatar>

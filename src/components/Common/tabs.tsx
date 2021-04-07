@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React, { ReactChild } from 'react';
 import {
   makeStyles,
@@ -15,7 +16,7 @@ import { setLocalSearch } from '../../store/ducks/local/actions';
 
 interface CustomTabs {
   customTabs: PropsTab[];
-  children: ReactChild;
+  children?: ReactChild;
 }
 
 const StyledTabs = withStyles({
@@ -79,8 +80,19 @@ const useStyles = makeStyles((theme: Theme) => ({
   padding: {
     padding: theme.spacing(3),
   },
-  demo: {
+  width: {
     width: '50%',
+    '& button': {
+      fontWeight: 1000,
+      color: '#333',
+    },
+    '& span': {
+      height: 3,
+    },
+    backgroundColor: 'rgba(66,236,154);',
+  },
+  fullWidth: {
+    width: '100%',
     '& button': {
       fontWeight: 1000,
       color: '#333',
@@ -104,16 +116,18 @@ const CustomizedTabs: React.FC<CustomTabs> = ({
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    dispatch(
-      setLocalSearch({ name: customTabs[newValue].label, url: 'char/url' }),
-    );
+    // Validation if want search
+    if (children && customTabs[newValue].searchUrl) {
+      dispatch(setLocalSearch({ name: customTabs[newValue].label, url: '' }));
+    }
+
     setValue(newValue);
   };
 
   return (
     <div className={classes.root}>
       <div className={classes.flexi}>
-        <div className={classes.demo}>
+        <div className={children ? classes.width : classes.fullWidth}>
           <StyledTabs
             variant="fullWidth"
             value={value}

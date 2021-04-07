@@ -31,13 +31,16 @@ const CardContent = styled.div`
   MAIN
   @TEX
 */
-interface Char {
+export interface Comics {
   title: string;
-  id: number;
+  description: string;
+  id: string;
   thumbnail: {
     extension: string;
     path: string;
   };
+  characters: { items: [] };
+  stories: { items: [] };
 }
 const SearchLocal: React.FC = () => {
   const [page, setPage] = React.useState(1);
@@ -61,7 +64,7 @@ const SearchLocal: React.FC = () => {
         {loading ? (
           <Loading />
         ) : (
-          comics.results.map((c: Char) => (
+          comics.results.map((c: Comics) => (
             <Card
               search="comics"
               id={c.id}
