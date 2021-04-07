@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import Skeleton from '@material-ui/lab/Skeleton';
 import { ApplicationState } from '../../store';
-import { getCharsIdAction } from '../../store/ducks/char-comics/actions';
+import { getComicsIdAction } from '../../store/ducks/char-comics/actions';
 import Tabs from '../Common/tabs';
 import StyleIntoTab from './style-link-tab';
 /*
@@ -53,13 +53,11 @@ const Favorit = styled.button`
 
 const TabsComponents = [
   {
-    label: 'Series',
-
+    label: 'Characters',
     component: <StyleIntoTab type="series" />,
   },
   {
     label: 'Story',
-
     component: <StyleIntoTab type="stories" />,
   },
 ];
@@ -69,13 +67,13 @@ const TabsComponents = [
 const CharPage: React.FC = () => {
   const dispatch = useDispatch();
   const { id }: Param = useParams();
-  const { charById } = useSelector(
+  const { comicsById } = useSelector(
     (state: ApplicationState) => state.charcomics,
   );
 
   const { loading } = useSelector((state: ApplicationState) => state.notify);
   useEffect(() => {
-    dispatch(getCharsIdAction(id));
+    dispatch(getComicsIdAction(id));
   }, []);
   return (
     <Main>
@@ -85,7 +83,7 @@ const CharPage: React.FC = () => {
             <Skeleton variant="rect" width="100%" height={500} />
           ) : (
             <Banner
-              src={`${charById.thumbnail.path}.${charById.thumbnail.extension}`}
+              src={`${comicsById.thumbnail.path}.${comicsById.thumbnail.extension}`}
             />
           )}
         </Grid>
@@ -99,8 +97,8 @@ const CharPage: React.FC = () => {
             </Content>
           ) : (
             <Content>
-              <h1>{charById.name}</h1>
-              <p>{charById.description || charById.name}</p>
+              <h1>{comicsById.title}</h1>
+              <p>{comicsById.description || comicsById.title}</p>
               <Favorit>Favoritar</Favorit>
             </Content>
           )}

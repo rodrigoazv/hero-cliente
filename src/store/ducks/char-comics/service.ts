@@ -32,3 +32,11 @@ export const getComics = async (search?: string, page?: number) => {
   );
   return resp;
 };
+
+export const getComicsId = async (id: string) => {
+  const resp = await axios.get(
+    `${process.env.REACT_APP_API_URL}/comics/index/${id}`,
+    headers,
+  );
+  return resp;
+};

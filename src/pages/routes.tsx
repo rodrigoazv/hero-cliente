@@ -2,6 +2,8 @@ import React from 'react';
 import Login from './Login/login';
 import HomePage from './HomePage/home-page';
 import CharPage from './CharPage/char-page';
+import ComicsPage from './ComicsPage/comics-page';
+import DefaultNotFound from './Default/not-found';
 
 interface RouteDataItem {
   path?: string;
@@ -27,12 +29,18 @@ export const routes: RouteDataItem[] = [
     path: '/comics/:id',
     name: 'comics',
     isProtected: true,
-    component: CharPage,
+    component: ComicsPage,
   },
   {
     path: '/char/:id',
     name: 'char',
     isProtected: true,
     component: CharPage,
+  },
+  {
+    path: '',
+    name: 'default',
+    isProtected: false,
+    component: DefaultNotFound,
   },
 ];

@@ -29,13 +29,10 @@ const TabsComponents = [
   MAIN
   @TEX
 */
-const HomePage: React.FC = () => {
-  console.log('oi');
-  return (
-    <Content>
-      <Apresentation />
-      <Tabs customTabs={TabsComponents} children={<SearchLocal />} />
-    </Content>
-  );
-};
+const HomePage: React.FC = () => (
+  <Content>
+    <Apresentation />
+    <Tabs customTabs={TabsComponents} children={<SearchLocal />} />
+  </Content>
+);
 export default HomePage;

@@ -1,6 +1,7 @@
 /* eslint-disable no-shadow */
 /* eslint-disable no-unused-vars */
 import { Char } from '../../../components/MainPage/card-char-mapped';
+import { Comics } from '../../../components/MainPage/card-comics-mapped';
 /**
  * Action types
  */
@@ -8,6 +9,7 @@ export enum CharComicsTypes {
   TOGGLE_COMICS = '@CharComicsractive/TOGGLE_COMICS',
   TOGGLE_CHAR = '@CharComicsactive/TOGGLE_CHAR',
   TOGGLE_CHAR_BY_ID = '@CharComicsactive/TOGGLE_CHAR_BY_ID',
+  TOGGLE_COMICS_BY_ID = '@CharComicsactive/TOGGLE_COMICS_BY_ID',
 }
 
 /**
@@ -47,7 +49,7 @@ export interface ComicsResponse {
  */
 export interface CharComicsState {
   charById: Char;
-  comicsById: { results: [{}] };
+  comicsById: Comics;
   comics: {
     offset: number;
     limit: number;

@@ -33,11 +33,14 @@ const CardContent = styled.div`
 */
 export interface Comics {
   title: string;
+  description: string;
   id: string;
   thumbnail: {
     extension: string;
     path: string;
   };
+  characters: { items: [] };
+  stories: { items: [] };
 }
 const SearchLocal: React.FC = () => {
   const [page, setPage] = React.useState(1);
