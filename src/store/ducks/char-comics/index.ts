@@ -7,6 +7,8 @@ const INITIAL_STATE: CharComicsState = {
     description: '',
     id: '',
     thumbnail: { extension: '', path: '' },
+    series: { items: [] },
+    stories: { items: [] },
   },
   comicsById: { results: [{}] },
   comics: { offset: 1, limit: 1, total: 0, count: 0, results: [] },

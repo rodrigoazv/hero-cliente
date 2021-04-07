@@ -42,6 +42,8 @@ export interface Char {
     extension: string;
     path: string;
   };
+  series: { items: [] };
+  stories: { items: [] };
 }
 
 const SearchLocal: React.FC = () => {

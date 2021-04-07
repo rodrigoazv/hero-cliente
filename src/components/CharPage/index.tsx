@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
+import Skeleton from '@material-ui/lab/Skeleton';
 import { ApplicationState } from '../../store';
 import { getCharsIdAction } from '../../store/ducks/char-comics/actions';
 import Tabs from '../Common/tabs';
@@ -20,6 +21,9 @@ const Content = styled.section`
   height: 100%;
   display: flex;
   flex-direction: column;
+  span {
+    height: 5px;
+  }
   h1 {
     font-size: 40px;
   }
@@ -51,12 +55,12 @@ const TabsComponents = [
   {
     label: 'Series',
     searchUrl: '/Series',
-    component: <StyleIntoTab />,
+    component: <StyleIntoTab type="series" />,
   },
   {
     label: 'Story',
     searchUrl: '/Story',
-    component: <StyleIntoTab />,
+    component: <StyleIntoTab type="stories" />,
   },
 ];
 /*
@@ -68,6 +72,7 @@ const CharPage: React.FC = () => {
   const { charById } = useSelector(
     (state: ApplicationState) => state.charcomics,
   );
+  const { loading } = useSelector((state: ApplicationState) => state.notify);
   useEffect(() => {
     dispatch(getCharsIdAction(id));
   }, []);
@@ -75,16 +80,29 @@ const CharPage: React.FC = () => {
     <Main>
       <Grid container spacing={5}>
         <Grid item xs={12} sm={8}>
-          <Banner
-            src={`${charById.thumbnail.path}.${charById.thumbnail.extension}`}
-          />
+          {loading ? (
+            <Skeleton variant="rect" width="100%" height={500} />
+          ) : (
+            <Banner
+              src={`${charById.thumbnail.path}.${charById.thumbnail.extension}`}
+            />
+          )}
         </Grid>
         <Grid item xs={12} sm={4}>
-          <Content>
-            <h1>{charById.name}</h1>
-            <p>{charById.description || charById.name}</p>
-            <Favorit>Favoritar</Favorit>
-          </Content>
+          {loading ? (
+            <Content>
+              <Skeleton variant="rect" width="100%" height={50} />
+              <span />
+              <Skeleton variant="rect" width="100%" height={100} />
+              <Favorit>Favoritar</Favorit>
+            </Content>
+          ) : (
+            <Content>
+              <h1>{charById.name}</h1>
+              <p>{charById.description || charById.name}</p>
+              <Favorit>Favoritar</Favorit>
+            </Content>
+          )}
         </Grid>
         <Grid item xs={12} sm={12}>
           <Tabs customTabs={TabsComponents} />
