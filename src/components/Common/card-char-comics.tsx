@@ -81,7 +81,7 @@ interface Props {
   title: string;
   image: string;
   description: string;
-  id: number;
+  id: string;
   search: string;
 }
 /*

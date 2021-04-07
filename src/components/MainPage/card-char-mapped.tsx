@@ -34,15 +34,16 @@ const CardContent = styled.div`
   @TEX
 */
 
-interface Char {
+export interface Char {
   name: string;
   description: string;
-  id: number;
+  id: string;
   thumbnail: {
     extension: string;
     path: string;
   };
 }
+
 const SearchLocal: React.FC = () => {
   const [page, setPage] = React.useState(1);
   const dispatch = useDispatch();

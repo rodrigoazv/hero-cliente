@@ -31,9 +31,9 @@ const CardContent = styled.div`
   MAIN
   @TEX
 */
-interface Char {
+export interface Comics {
   title: string;
-  id: number;
+  id: string;
   thumbnail: {
     extension: string;
     path: string;
@@ -61,7 +61,7 @@ const SearchLocal: React.FC = () => {
         {loading ? (
           <Loading />
         ) : (
-          comics.results.map((c: Char) => (
+          comics.results.map((c: Comics) => (
             <Card
               search="comics"
               id={c.id}

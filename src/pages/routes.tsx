@@ -1,6 +1,7 @@
 import React from 'react';
 import Login from './Login/login';
 import HomePage from './HomePage/home-page';
+import CharPage from './CharPage/char-page';
 
 interface RouteDataItem {
   path?: string;
@@ -26,12 +27,12 @@ export const routes: RouteDataItem[] = [
     path: '/comics/:id',
     name: 'comics',
     isProtected: true,
-    component: HomePage,
+    component: CharPage,
   },
   {
     path: '/char/:id',
     name: 'char',
     isProtected: true,
-    component: HomePage,
+    component: CharPage,
   },
 ];
