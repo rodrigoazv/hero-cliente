@@ -32,6 +32,7 @@ export default {
     white: '#fff',
     success: '#34a853',
     body: '#fcfbfe',
+    gold: 'rgba(255,215,0)',
     primary: {
       light: 'rgba(66, 236, 154)',
       main: 'rgba(66, 236, 154)',

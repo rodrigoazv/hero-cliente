@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import Skeleton from '@material-ui/lab/Skeleton';
 import { ApplicationState } from '../../store';
 import { getCharsIdAction } from '../../store/ducks/char-comics/actions';
+import { likeCharComicAction } from '../../store/ducks/user/actions';
 import Tabs from '../Common/tabs';
 import StyleIntoTab from './style-link-tab';
 /*
@@ -77,6 +78,17 @@ const CharPage: React.FC = () => {
   useEffect(() => {
     dispatch(getCharsIdAction(id));
   }, []);
+
+  const setLike = (idL: string, nameL: string, thumbL: string) => {
+    dispatch(
+      likeCharComicAction({
+        id: idL,
+        name: nameL,
+        thumb: thumbL,
+        type: 'characters',
+      }),
+    );
+  };
   return (
     <Main>
       <Grid container spacing={5}>
@@ -101,7 +113,17 @@ const CharPage: React.FC = () => {
             <Content>
               <h1>{charById.name}</h1>
               <p>{charById.description || charById.name}</p>
-              <Favorit>Favoritar</Favorit>
+              <Favorit
+                onClick={() =>
+                  setLike(
+                    charById.id,
+                    charById.name,
+                    `${charById.thumbnail.path}.${charById.thumbnail.extension}`,
+                  )
+                }
+              >
+                Favoritar
+              </Favorit>
             </Content>
           )}
         </Grid>

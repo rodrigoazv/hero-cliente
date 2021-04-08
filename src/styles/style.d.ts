@@ -28,7 +28,7 @@ declare module 'styled-components' {
       success: string;
       body: string;
       black: string;
-
+      gold: string;
       primary: {
         light: string;
         main: string;
