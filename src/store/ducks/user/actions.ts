@@ -184,7 +184,7 @@ export const likeCharComicAction = (data: likeCharComics) => async (
         active: true,
         errorType: '',
         successType: 'like',
-        message: 'Like success',
+        message: !data.like ? 'Like success' : 'Deslike success',
       },
     });
   } catch (error) {
