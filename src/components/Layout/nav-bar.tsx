@@ -30,7 +30,6 @@ const GroupAvatar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: auto 0;
 `;
 
 const GroupMessage = styled.div`
@@ -67,7 +66,7 @@ const HomePage: React.FC = () => {
         </Link>
 
         <GroupAvatar>
-          <Avatar size={48} />
+          <Avatar />
         </GroupAvatar>
       </ContainerLayout>
     </NavBar>
