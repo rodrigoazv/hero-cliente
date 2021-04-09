@@ -134,7 +134,13 @@ const CardComicsChar: React.FC<Props> = ({
     <Father>
       <Favor
         onClick={() =>
-          likeOrDeslike({ type: search, id, name: title, thumb: image })
+          likeOrDeslike({
+            type: search,
+            id,
+            name: title,
+            thumb: image,
+            like: liked,
+          })
         }
       >
         <span>

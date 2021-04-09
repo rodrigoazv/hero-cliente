@@ -62,6 +62,7 @@ const SearchLocal: React.FC = () => {
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
   };
+  const allIds = likedChar?.map((val) => val.charId);
   return (
     <Content>
       <CardContent>
@@ -76,10 +77,7 @@ const SearchLocal: React.FC = () => {
                 title={c.name}
                 description={c.description || c.name}
                 image={`${c.thumbnail.path}.${c.thumbnail.extension}`}
-                liked={verifyLike(
-                  likedChar.map((val) => val.charId),
-                  c.id,
-                )}
+                liked={verifyLike(allIds, c.id)}
               />
             ))}
           </>

@@ -1,10 +1,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
 import Logo from '../../styles/assets/logo.svg';
 import Avatar from '../Common/avatar';
 import { ContainerLayout } from '../Common/container';
+import { ApplicationState } from '../../store';
+import { refetchCharComicLikeAction } from '../../store/ducks/user/actions';
 
 /*
   Componentes style
@@ -45,20 +48,29 @@ const Logos = styled.img<PropsStyles>`
   MAIN
   @TEX
 */
-const HomePage: React.FC = () => (
-  <NavBar>
-    <ContainerLayout>
-      <GroupMessage>
-        <b>Bem vindo</b> ao Super!
-      </GroupMessage>
-      <Link to="/home">
-        <Logos src={Logo} />
-      </Link>
+const HomePage: React.FC = () => {
+  const { message } = useSelector((state: ApplicationState) => state.notify);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (message.successType === 'like' || message.successType === 'auth') {
+      dispatch(refetchCharComicLikeAction());
+    }
+  }, [message]);
+  return (
+    <NavBar>
+      <ContainerLayout>
+        <GroupMessage>
+          <b>Bem vindo</b> ao Super!
+        </GroupMessage>
+        <Link to="/home">
+          <Logos src={Logo} />
+        </Link>
 
-      <GroupAvatar>
-        <Avatar size={48} />
-      </GroupAvatar>
-    </ContainerLayout>
-  </NavBar>
-);
+        <GroupAvatar>
+          <Avatar size={48} />
+        </GroupAvatar>
+      </ContainerLayout>
+    </NavBar>
+  );
+};
 export default HomePage;

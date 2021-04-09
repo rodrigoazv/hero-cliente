@@ -10,6 +10,7 @@ import { getCharsIdAction } from '../../store/ducks/char-comics/actions';
 import { likeCharComicAction } from '../../store/ducks/user/actions';
 import Tabs from '../Common/tabs';
 import StyleIntoTab from './style-link-tab';
+import { verifyLike } from '../../utils/help';
 /*
   Componentes props
 */
@@ -73,22 +74,30 @@ const CharPage: React.FC = () => {
   const { charById } = useSelector(
     (state: ApplicationState) => state.charcomics,
   );
+  const { likedChar } = useSelector((state: ApplicationState) => state.user);
 
   const { loading } = useSelector((state: ApplicationState) => state.notify);
   useEffect(() => {
     dispatch(getCharsIdAction(id));
   }, []);
 
-  const setLike = (idL: string, nameL: string, thumbL: string) => {
+  const setLike = (
+    idL: string,
+    nameL: string,
+    thumbL: string,
+    like: boolean,
+  ) => {
     dispatch(
       likeCharComicAction({
         id: idL,
         name: nameL,
         thumb: thumbL,
         type: 'characters',
+        like: !like,
       }),
     );
   };
+  const allIds = likedChar?.map((val) => val.charId);
   return (
     <Main>
       <Grid container spacing={5}>
@@ -113,17 +122,33 @@ const CharPage: React.FC = () => {
             <Content>
               <h1>{charById.name}</h1>
               <p>{charById.description || charById.name}</p>
-              <Favorit
-                onClick={() =>
-                  setLike(
-                    charById.id,
-                    charById.name,
-                    `${charById.thumbnail.path}.${charById.thumbnail.extension}`,
-                  )
-                }
-              >
-                Favoritar
-              </Favorit>
+              {verifyLike(allIds, charById.id) ? (
+                <Favorit
+                  onClick={() =>
+                    setLike(
+                      charById.id,
+                      charById.name,
+                      `${charById.thumbnail.path}.${charById.thumbnail.extension}`,
+                      false,
+                    )
+                  }
+                >
+                  Desfavoritar
+                </Favorit>
+              ) : (
+                <Favorit
+                  onClick={() =>
+                    setLike(
+                      charById.id,
+                      charById.name,
+                      `${charById.thumbnail.path}.${charById.thumbnail.extension}`,
+                      true,
+                    )
+                  }
+                >
+                  Favoritar
+                </Favorit>
+              )}
             </Content>
           )}
         </Grid>

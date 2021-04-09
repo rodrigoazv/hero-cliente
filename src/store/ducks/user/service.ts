@@ -34,6 +34,22 @@ export const sendLogin = async (user: UserLogin) => {
   return resp;
 };
 
+export const refetchLike = async () => {
+  const headers = {
+    headers: {
+      'Access-Control-Allow-Credentials': true,
+      'Content-Type': 'application/json',
+      authorization: Cookies.get('authorization'),
+    },
+    withCredentials: true,
+  };
+  const resp: UserResponse = await axios.get(
+    `${process.env.REACT_APP_API_URL}/like/byUser`,
+    headers,
+  );
+  return resp;
+};
+
 export const likeCharComic = async (data: likeCharComics) => {
   const headers = {
     headers: {
