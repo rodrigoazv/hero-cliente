@@ -32,8 +32,8 @@ export const routes: RouteDataItem[] = [
     component: ComicsPage,
   },
   {
-    path: '/char/:id',
-    name: 'char',
+    path: '/characters/:id',
+    name: 'characters',
     isProtected: true,
     component: CharPage,
   },

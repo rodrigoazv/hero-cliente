@@ -1,8 +1,14 @@
 import { ThunkAction } from 'redux-thunk';
 import { Action, Dispatch } from 'redux';
-import { UserTypes, User, UserResponse, UserLogin } from './types';
+import {
+  UserTypes,
+  User,
+  UserResponse,
+  UserLogin,
+  likeCharComics,
+} from './types';
 import { NotifyTypes } from '../notify/types';
-import { sendRegister, sendLogin } from './service';
+import { sendRegister, sendLogin, likeCharComic, refetchLike } from './service';
 import { ApplicationState } from '../../index';
 
 export type AppThunk = ThunkAction<
@@ -41,6 +47,16 @@ export const sendLoginAction = (data: UserLogin) => async (
   try {
     const respData: UserResponse = await sendLogin(data);
     dispatch({ type: UserTypes.TOGGLE_LOGIN, payload: respData.data.token });
+    dispatch({
+      type: NotifyTypes.SET_MESSAGE,
+      payload: {
+        severity: 'success',
+        active: true,
+        successType: 'auth',
+        errorType: '',
+        message: '',
+      },
+    });
   } catch (error) {
     dispatch({
       type: NotifyTypes.SET_MESSAGE,
@@ -73,5 +89,58 @@ export const setAuth = () => async (dispatch: Dispatch) => {
     });
   } finally {
     dispatch({ type: NotifyTypes.SET_LOADING, payload: false });
+  }
+};
+
+export const refetchCharComicLikeAction = () => async (dispatch: Dispatch) => {
+  try {
+    const respData = await refetchLike();
+    dispatch({
+      type: UserTypes.TOGGLE_CHAR_LIKE,
+      payload: respData.data.likedChar,
+    });
+
+    dispatch({
+      type: UserTypes.TOGGLE_COMIC_LIKE,
+      payload: respData.data.likedComic,
+    });
+  } catch (error) {
+    dispatch({
+      type: NotifyTypes.SET_MESSAGE,
+      payload: {
+        severity: 'error',
+        active: true,
+        errorType: error.response.data.error.type,
+        message: error.response.data.error.message,
+      },
+    });
+  }
+};
+
+export const likeCharComicAction = (data: likeCharComics) => async (
+  dispatch: Dispatch,
+) => {
+  try {
+    await likeCharComic(data);
+    dispatch({
+      type: NotifyTypes.SET_MESSAGE,
+      payload: {
+        severity: 'success',
+        active: true,
+        errorType: '',
+        successType: 'like',
+        message: 'Like success',
+      },
+    });
+  } catch (error) {
+    dispatch({
+      type: NotifyTypes.SET_MESSAGE,
+      payload: {
+        severity: 'error',
+        active: true,
+        errorType: error.response.data.error.type,
+        message: error.response.data.error.message,
+      },
+    });
   }
 };

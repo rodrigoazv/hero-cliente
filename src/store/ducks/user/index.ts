@@ -3,10 +3,12 @@ import { UserState, UserTypes } from './types';
 
 const INITIAL_STATE: UserState = {
   token: '',
+  likedComic: [{ comicId: '', comicName: '', comicThumb: '' }],
+  likedChar: [{ charId: '', charName: '', charThumb: '' }],
   auth: false,
 };
 
-const reducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
+const reducer: Reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case UserTypes.TOGGLE_REGISTER:
       return { ...state, token: action.payload, auth: true };
@@ -14,6 +16,10 @@ const reducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
       return { ...state, token: action.payload, auth: true };
     case UserTypes.TOGGLE_LOGOUT:
       return { ...state, token: action.payload, auth: false };
+    case UserTypes.TOGGLE_CHAR_LIKE:
+      return { ...state, likedChar: action.payload };
+    case UserTypes.TOGGLE_COMIC_LIKE:
+      return { ...state, likedComic: action.payload };
     default:
       return state;
   }

@@ -9,6 +9,8 @@ import { ApplicationState } from '../../store';
 import { getComicsIdAction } from '../../store/ducks/char-comics/actions';
 import Tabs from '../Common/tabs';
 import StyleIntoTab from './style-link-tab';
+import { likeCharComicAction } from '../../store/ducks/user/actions';
+import { verifyLike } from '../../utils/help';
 /*
   Componentes props
 */
@@ -72,9 +74,27 @@ const CharPage: React.FC = () => {
   );
 
   const { loading } = useSelector((state: ApplicationState) => state.notify);
+  const { likedComic } = useSelector((state: ApplicationState) => state.user);
   useEffect(() => {
     dispatch(getComicsIdAction(id));
   }, []);
+  const setLike = (
+    idL: string,
+    nameL: string,
+    thumbL: string,
+    like: boolean,
+  ) => {
+    dispatch(
+      likeCharComicAction({
+        id: idL,
+        name: nameL,
+        thumb: thumbL,
+        type: 'comics',
+        like: !like,
+      }),
+    );
+  };
+  const allIds = likedComic?.map((val) => val.comicId);
   return (
     <Main>
       <Grid container spacing={5}>
@@ -99,7 +119,33 @@ const CharPage: React.FC = () => {
             <Content>
               <h1>{comicsById.title}</h1>
               <p>{comicsById.description || comicsById.title}</p>
-              <Favorit>Favoritar</Favorit>
+              {verifyLike(allIds, comicsById.id) ? (
+                <Favorit
+                  onClick={() =>
+                    setLike(
+                      comicsById.id,
+                      comicsById.title,
+                      `${comicsById.thumbnail.path}.${comicsById.thumbnail.extension}`,
+                      false,
+                    )
+                  }
+                >
+                  Desfavoritar
+                </Favorit>
+              ) : (
+                <Favorit
+                  onClick={() =>
+                    setLike(
+                      comicsById.id,
+                      comicsById.title,
+                      `${comicsById.thumbnail.path}.${comicsById.thumbnail.extension}`,
+                      true,
+                    )
+                  }
+                >
+                  Favoritar
+                </Favorit>
+              )}
             </Content>
           )}
         </Grid>

@@ -7,6 +7,7 @@ import { ApplicationState } from '../../store';
 import { getCharsAction } from '../../store/ducks/char-comics/actions';
 import Card from '../Common/card-char-comics';
 import Loading from '../Common/loading';
+import { verifyLike } from '../../utils/help';
 
 const Content = styled.div`
   display: flex;
@@ -56,10 +57,12 @@ const SearchLocal: React.FC = () => {
   }, [page]);
   const { char } = useSelector((state: ApplicationState) => state.charcomics);
   const { loading } = useSelector((state: ApplicationState) => state.notify);
+  const { likedChar } = useSelector((state: ApplicationState) => state.user);
 
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
   };
+  const allIds = likedChar?.map((val) => val.charId);
   return (
     <Content>
       <CardContent>
@@ -69,11 +72,12 @@ const SearchLocal: React.FC = () => {
           <>
             {char.results.map((c: Char) => (
               <Card
-                search="char"
+                search="characters"
                 id={c.id}
                 title={c.name}
                 description={c.description || c.name}
                 image={`${c.thumbnail.path}.${c.thumbnail.extension}`}
+                liked={verifyLike(allIds, c.id)}
               />
             ))}
           </>
