@@ -40,7 +40,7 @@ interface StyledTabProps {
 }
 
 function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, width, ...other } = props;
 
   return (
     <div
@@ -48,10 +48,11 @@ function TabPanel(props: TabPanelProps) {
       hidden={value !== index}
       id={`nav-tabpanel-${index}`}
       aria-labelledby={`nav-tab-${index}`}
+      style={{ width }}
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...other}
     >
-      {value === index && <Box>{children}</Box>}
+      {value === index && <Box width="100%">{children}</Box>}
     </div>
   );
 }
@@ -126,7 +127,7 @@ const CustomizedTabs: React.FC<CustomTabs> = ({
 
   return (
     <div className={classes.root}>
-      <div className={classes.flexi}>
+      <div className={classes.flexi} key="1">
         <div className={children ? classes.width : classes.fullWidth}>
           <StyledTabs
             variant="fullWidth"
@@ -142,11 +143,9 @@ const CustomizedTabs: React.FC<CustomTabs> = ({
         {children}
       </div>
       {customTabs.map((tab, index) => (
-        <>
-          <TabPanel value={value} index={index}>
-            {tab.component}
-          </TabPanel>
-        </>
+        <TabPanel value={value} index={index} width="100%">
+          {tab.component}
+        </TabPanel>
       ))}
     </div>
   );

@@ -7,10 +7,10 @@ export enum UserTypes {
   TOGGLE_REGISTER = '@useractive/TOGGLE_REGISTER',
   TOGGLE_LOGIN = '@useractive/TOGGLE_LOGIN',
   TOGGLE_LOGOUT = '@useractive/TOGGLE_LOGOUT',
+  TOGGLE_USER = '@useractive/TOGGLE_USER',
+  TOGGLE_UPDATE_USER = '@useractive/TOGGLE_UPDATE_USER',
   TOGGLE_CHAR_LIKE = '@useractive/TOGGLE_CHAR_LIKE',
   TOGGLE_COMIC_LIKE = '@useractive/TOGGLE_COMIC_LIKE',
-  TOGGLE_CHAR_LIKE_LOCAL = '@useractive/TOGGLE_CHAR_LIKE_LOCAL',
-  TOGGLE_COMIC_LIKE_LOCAL = '@useractive/TOGGLE_COMIC_LIKE_LOCAL',
 }
 
 /**
@@ -45,6 +45,7 @@ export interface UserResponse {
     token: string;
     likedChar: [];
     likedComic: [];
+    user: {};
   };
 }
 export interface likeCharComicsResponse {
@@ -60,4 +61,12 @@ export interface UserState {
   likedChar: [{ charId: string; charThumb: string; charName: string }];
   likedComic: [{ comicId: string; comicThumb: string; comicName: string }];
   auth: boolean;
+  nick: string;
+  userData: {
+    email: string;
+    birthDay: Date;
+    firstName: string;
+    lastName: string;
+    nickName: string;
+  };
 }

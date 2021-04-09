@@ -2,6 +2,7 @@ import React, { ReactChild } from 'react';
 
 export interface TabPanelProps {
   // eslint-disable-next-line react/require-default-props
+  width: string;
   children?: ReactChild;
   index: any;
   value: any;

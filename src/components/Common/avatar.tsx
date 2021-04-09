@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
 import { AiFillStar, AiFillAccountBook, AiOutlineLogout } from 'react-icons/ai';
 /*
   Componentes styles
@@ -77,28 +78,33 @@ const DropDown = styled.div`
   MAIN
   @TEX
 */
-const Avatar: React.FC = () => (
-  <>
-    <DropDown>
-      <Button>
-        <span>Seu Perfil</span>
-      </Button>
-      <DropDownContent>
-        <Link to="/user/acc">
-          <AiFillAccountBook size={16} />
-          Ver conta
-        </Link>
-        <Link to="/user/favorit">
-          <AiFillStar size={16} />
-          Ver Favoritos
-        </Link>
-        <Link to="/" onClick={() => console.log()}>
-          <AiOutlineLogout size={16} />
-          Logout
-        </Link>
-      </DropDownContent>
-    </DropDown>
-  </>
-);
+const Avatar: React.FC = () => {
+  const handleLogout = () => {
+    Cookies.remove('authorization');
+  };
+  return (
+    <>
+      <DropDown>
+        <Button>
+          <span>Seu Perfil</span>
+        </Button>
+        <DropDownContent>
+          <Link to="/user/acc">
+            <AiFillAccountBook size={16} />
+            Ver conta
+          </Link>
+          <Link to="/user/fav">
+            <AiFillStar size={16} />
+            Ver Favoritos
+          </Link>
+          <Link to="/" onClick={() => handleLogout()}>
+            <AiOutlineLogout size={16} />
+            Logout
+          </Link>
+        </DropDownContent>
+      </DropDown>
+    </>
+  );
+};
 
 export default Avatar;

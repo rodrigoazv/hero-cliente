@@ -1,6 +1,6 @@
 import React from 'react';
 import { Content } from './styles';
-import UserPage from '../../components/User/user-detail';
+import UserPage from '../../components/User/user-likes-detail';
 import Layout from '../../components/Layout';
 /*
   Componentes styles
