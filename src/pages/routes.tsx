@@ -3,6 +3,8 @@ import Login from './Login/login';
 import HomePage from './HomePage/home-page';
 import CharPage from './CharPage/char-page';
 import ComicsPage from './ComicsPage/comics-page';
+import UserPage from './UserPage/user-page';
+import LikePage from './UserPage/user-like-page';
 import DefaultNotFound from './Default/not-found';
 
 interface RouteDataItem {
@@ -36,6 +38,18 @@ export const routes: RouteDataItem[] = [
     name: 'characters',
     isProtected: true,
     component: CharPage,
+  },
+  {
+    path: '/user/acc',
+    name: 'user',
+    isProtected: true,
+    component: UserPage,
+  },
+  {
+    path: '/user/fav',
+    name: 'user',
+    isProtected: true,
+    component: LikePage,
   },
   {
     path: '',

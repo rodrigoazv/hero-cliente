@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import { Form, Formik, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,7 +12,10 @@ import {
 import Cookies from 'js-cookie';
 import { useHistory } from 'react-router';
 import { Button, FormDiv } from '../Common/forms';
-import { sendRegisterAction } from '../../store/ducks/user/actions';
+import {
+  sendRegisterAction,
+  sendUpdateAction,
+} from '../../store/ducks/user/actions';
 import { ApplicationState } from '../../store';
 import { User } from '../../store/ducks/user/types';
 /*
@@ -42,17 +46,22 @@ const registerSchema = yup.object().shape({
   @TEX
 */
 
-const Register: React.FC = () => {
+interface Props {
+  isUpdate?: boolean;
+}
+
+const Register: React.FC<Props> = ({ isUpdate }: Props) => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state: ApplicationState) => state.notify);
+  const { userData } = useSelector((state: ApplicationState) => state.user);
   const history = useHistory();
   const initialValues: User = {
-    email: '',
+    email: isUpdate ? userData.email : '',
     password: '',
-    nickName: '',
-    firstName: '',
-    lastName: '',
-    birthDay: new Date(),
+    nickName: isUpdate ? userData.nickName : '',
+    firstName: isUpdate ? userData.firstName : '',
+    lastName: isUpdate ? userData.lastName : '',
+    birthDay: isUpdate ? userData.birthDay : new Date(),
   };
   const register = (values: User) => {
     dispatch(sendRegisterAction(values));
@@ -60,11 +69,16 @@ const Register: React.FC = () => {
       history.push('/home');
     }
   };
+  const update = (values: User) => {
+    dispatch(sendUpdateAction(values));
+  };
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Formik
         initialValues={initialValues}
-        onSubmit={(values) => register(values)}
+        onSubmit={(values: User) =>
+          isUpdate ? update(values) : register(values)
+        }
         validationSchema={registerSchema}
       >
         {({
@@ -96,6 +110,7 @@ const Register: React.FC = () => {
                 type="text"
                 size="small"
                 name="firstName"
+                disabled={isUpdate}
                 label="Qual seu primeiro nome ?"
                 onChange={handleChange}
                 value={values.firstName}
@@ -110,6 +125,7 @@ const Register: React.FC = () => {
                 type="text"
                 size="small"
                 name="lastName"
+                disabled={isUpdate}
                 label="Qual seu ultimo nome ?"
                 onChange={handleChange}
                 value={values.lastName}
@@ -125,6 +141,7 @@ const Register: React.FC = () => {
                 size="small"
                 name="email"
                 label="Qual seu e-mail ?"
+                disabled={isUpdate}
                 onChange={handleChange}
                 value={values.email}
                 error={touched.email && Boolean(errors.email)}
@@ -138,7 +155,11 @@ const Register: React.FC = () => {
                 type="password"
                 size="small"
                 name="password"
-                label="Escolha uma senha beeem segura"
+                label={
+                  isUpdate
+                    ? 'Digite sua senha'
+                    : 'Escolha uma senha beeem segura'
+                }
                 onChange={handleChange}
                 value={values.password}
                 error={touched.password && Boolean(errors.password)}
@@ -154,6 +175,7 @@ const Register: React.FC = () => {
                 format="dd/MM/yyyy"
                 margin="normal"
                 name="birthDay"
+                disabled={isUpdate}
                 id="date-picker-inline"
                 label="Selecione uma data"
                 inputVariant="outlined"
@@ -169,7 +191,7 @@ const Register: React.FC = () => {
               </span>
 
               <Button type="submit" fullWidth disabled={loading}>
-                Registrar
+                {isUpdate ? 'Salvar' : 'Registrar'}
               </Button>
             </FormDiv>
           </Form>

@@ -8,7 +8,14 @@ import {
   likeCharComics,
 } from './types';
 import { NotifyTypes } from '../notify/types';
-import { sendRegister, sendLogin, likeCharComic, refetchLike } from './service';
+import {
+  sendRegister,
+  sendLogin,
+  likeCharComic,
+  refetchLike,
+  getUser,
+  sendUpdate,
+} from './service';
 import { ApplicationState } from '../../index';
 
 export type AppThunk = ThunkAction<
@@ -24,6 +31,34 @@ export const sendRegisterAction = (data: User) => async (
   try {
     const respData: UserResponse = await sendRegister(data);
     dispatch({ type: UserTypes.TOGGLE_REGISTER, payload: respData.data.token });
+  } catch (error) {
+    dispatch({
+      type: NotifyTypes.SET_MESSAGE,
+      payload: {
+        severity: 'error',
+        active: true,
+        errorType: error.response.data.error.type,
+        message: error.response.data.error.message,
+      },
+    });
+  } finally {
+    dispatch({ type: NotifyTypes.SET_LOADING, payload: false });
+  }
+};
+export const sendUpdateAction = (data: User) => async (dispatch: Dispatch) => {
+  dispatch({ type: NotifyTypes.SET_LOADING, payload: true });
+  try {
+    const respData: UserResponse = await sendUpdate(data);
+    dispatch({ type: UserTypes.TOGGLE_REGISTER, payload: respData.data.token });
+    dispatch({
+      type: NotifyTypes.SET_MESSAGE,
+      payload: {
+        severity: 'success',
+        active: true,
+        errorType: '',
+        message: 'User updated',
+      },
+    });
   } catch (error) {
     dispatch({
       type: NotifyTypes.SET_MESSAGE,
@@ -57,6 +92,26 @@ export const sendLoginAction = (data: UserLogin) => async (
         message: '',
       },
     });
+  } catch (error) {
+    dispatch({
+      type: NotifyTypes.SET_MESSAGE,
+      payload: {
+        severity: 'error',
+        active: true,
+        errorType: error.response.data.error.type,
+        message: error.response.data.error.message,
+      },
+    });
+  } finally {
+    dispatch({ type: NotifyTypes.SET_LOADING, payload: false });
+  }
+};
+
+export const getUserAction = () => async (dispatch: Dispatch) => {
+  dispatch({ type: NotifyTypes.SET_LOADING, payload: true });
+  try {
+    const respData: UserResponse = await getUser();
+    dispatch({ type: UserTypes.TOGGLE_USER, payload: respData.data.user });
   } catch (error) {
     dispatch({
       type: NotifyTypes.SET_MESSAGE,
@@ -129,7 +184,7 @@ export const likeCharComicAction = (data: likeCharComics) => async (
         active: true,
         errorType: '',
         successType: 'like',
-        message: 'Like success',
+        message: !data.like ? 'Like success' : 'Deslike success',
       },
     });
   } catch (error) {

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Logo from '../../styles/assets/logo.svg';
 import Logins from './login';
-import Register from './register';
+import Register from './registerOrUpdate';
 import { ContainerLogin } from '../Common/container';
 
 interface PropsStyles {
