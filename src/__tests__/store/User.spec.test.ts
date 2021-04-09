@@ -28,7 +28,7 @@ describe('actions', () => {
     const initialState = {}
     const store = mockStore(initialState)
    
-    const expectedPayload = [  NotifyTypes.SET_LOADING, UserTypes.TOGGLE_LOGIN, NotifyTypes.SET_LOADING ]
+    const expectedPayload = [  NotifyTypes.SET_LOADING, UserTypes.TOGGLE_LOGIN,NotifyTypes.SET_MESSAGE, NotifyTypes.SET_LOADING ]
     const user: UserLogin ={ email:"rodrigo@gmail.com", password:'1234qwer'}
 
     return store.dispatch<any>(sendLoginAction(user)).then(() => { 

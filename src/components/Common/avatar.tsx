@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { AiFillStar, AiFillAccountBook, AiOutlineLogout } from 'react-icons/ai';
+import { useSelector } from 'react-redux';
+import { ApplicationState } from 'src/store';
 /*
   Componentes styles
 */
@@ -79,6 +81,7 @@ const DropDown = styled.div`
   @TEX
 */
 const Avatar: React.FC = () => {
+  const { nick } = useSelector((state: ApplicationState) => state.user);
   const handleLogout = () => {
     Cookies.remove('authorization');
   };
@@ -86,7 +89,7 @@ const Avatar: React.FC = () => {
     <>
       <DropDown>
         <Button>
-          <span>Seu Perfil</span>
+          <span>{`Olá, ${nick}`}</span>
         </Button>
         <DropDownContent>
           <Link to="/user/acc">
