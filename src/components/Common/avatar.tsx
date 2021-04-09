@@ -84,11 +84,11 @@ const Avatar: React.FC = () => (
         <span>Seu Perfil</span>
       </Button>
       <DropDownContent>
-        <Link to="/user/orders">
+        <Link to="/user/acc">
           <AiFillAccountBook size={16} />
           Ver conta
         </Link>
-        <Link to="/user/orders">
+        <Link to="/user/favorit">
           <AiFillStar size={16} />
           Ver Favoritos
         </Link>
