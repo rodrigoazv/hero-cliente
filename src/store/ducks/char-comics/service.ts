@@ -1,12 +1,11 @@
 import axios from 'axios';
-import Cookies from 'js-cookie';
 
 export const getChars = async (search?: string, page?: number) => {
   const headers = {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Credentials': true,
-      authorization: Cookies.get('authorization'),
+      authorization: localStorage.getItem('@authorization'),
     },
     withCredentials: true,
   };
@@ -24,7 +23,7 @@ export const getCharId = async (id: string) => {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Credentials': true,
-      authorization: Cookies.get('authorization'),
+      authorization: localStorage.getItem('@authorization'),
     },
     withCredentials: true,
   };
@@ -40,7 +39,7 @@ export const getComics = async (search?: string, page?: number) => {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Credentials': true,
-      authorization: Cookies.get('authorization'),
+      authorization: localStorage.getItem('@authorization'),
     },
     withCredentials: true,
   };
@@ -58,7 +57,7 @@ export const getComicsId = async (id: string) => {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Credentials': true,
-      authorization: Cookies.get('authorization'),
+      authorization: localStorage.getItem('@authorization'),
     },
     withCredentials: true,
   };

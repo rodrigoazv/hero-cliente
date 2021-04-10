@@ -2,7 +2,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Cookies from 'js-cookie';
 import { AiFillStar, AiFillAccountBook, AiOutlineLogout } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import { ApplicationState } from 'src/store';
@@ -83,7 +82,7 @@ const DropDown = styled.div`
 const Avatar: React.FC = () => {
   const { nick } = useSelector((state: ApplicationState) => state.user);
   const handleLogout = () => {
-    Cookies.remove('authorization');
+    localStorage.removeItem('@authorization');
   };
   return (
     <>
