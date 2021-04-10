@@ -1,5 +1,4 @@
 import axios from 'axios';
-import Cookies from 'js-cookie';
 import { User, UserResponse, UserLogin, likeCharComics } from './types';
 
 export const sendRegister = async (user: User) => {
@@ -23,7 +22,7 @@ export const sendUpdate = async (user: User) => {
     headers: {
       'Access-Control-Allow-Credentials': true,
       'Content-Type': 'application/json',
-      authorization: Cookies.get('authorization'),
+      authorization: localStorage.getItem('@authorization'),
     },
     withCredentials: true,
   };
@@ -56,7 +55,7 @@ export const getUser = async () => {
     headers: {
       'Access-Control-Allow-Credentials': true,
       'Content-Type': 'application/json',
-      authorization: Cookies.get('authorization'),
+      authorization: localStorage.getItem('@authorization'),
     },
     withCredentials: true,
   };
@@ -72,7 +71,7 @@ export const refetchLike = async () => {
     headers: {
       'Access-Control-Allow-Credentials': true,
       'Content-Type': 'application/json',
-      authorization: Cookies.get('authorization'),
+      authorization: localStorage.getItem('@authorization'),
     },
     withCredentials: true,
   };
@@ -88,7 +87,7 @@ export const likeCharComic = async (data: likeCharComics) => {
     headers: {
       'Access-Control-Allow-Credentials': true,
       'Content-Type': 'application/json',
-      authorization: Cookies.get('authorization'),
+      authorization: localStorage.getItem('@authorization'),
     },
     withCredentials: true,
   };

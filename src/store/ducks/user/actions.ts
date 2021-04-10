@@ -30,6 +30,7 @@ export const sendRegisterAction = (data: User) => async (
   dispatch({ type: NotifyTypes.SET_LOADING, payload: true });
   try {
     const respData: UserResponse = await sendRegister(data);
+    localStorage.setItem('@authorization', respData.data.token);
     dispatch({ type: UserTypes.TOGGLE_REGISTER, payload: respData.data.token });
   } catch (error) {
     dispatch({
@@ -81,6 +82,7 @@ export const sendLoginAction = (data: UserLogin) => async (
 
   try {
     const respData: UserResponse = await sendLogin(data);
+    localStorage.setItem('@authorization', respData.data.token);
     dispatch({ type: UserTypes.TOGGLE_LOGIN, payload: respData.data.token });
     dispatch({
       type: NotifyTypes.SET_MESSAGE,

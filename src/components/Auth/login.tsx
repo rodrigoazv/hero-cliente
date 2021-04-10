@@ -5,7 +5,6 @@ import TextField from '@material-ui/core/TextField';
 import * as yup from 'yup';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import Cookies from 'js-cookie';
 import { Button, FormDiv } from '../Common/forms';
 import { ApplicationState } from '../../store';
 import { sendLoginAction } from '../../store/ducks/user/actions';
@@ -29,7 +28,7 @@ const Login: React.FC = () => {
 
   const login = async (values: any) => {
     await dispatch(sendLoginAction(values));
-    if (Cookies.get('authorization') !== '') {
+    if (localStorage.getItem('@authorization') !== '') {
       history.push('/home');
     }
   };

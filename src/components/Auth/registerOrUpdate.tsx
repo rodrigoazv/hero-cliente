@@ -9,7 +9,6 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
-import Cookies from 'js-cookie';
 import { useHistory } from 'react-router';
 import { Button, FormDiv } from '../Common/forms';
 import {
@@ -65,7 +64,7 @@ const Register: React.FC<Props> = ({ isUpdate }: Props) => {
   };
   const register = (values: User) => {
     dispatch(sendRegisterAction(values));
-    if (Cookies.get('authorization') !== '') {
+    if (localStorage.getItem('@authorization') !== '') {
       history.push('/home');
     }
   };
