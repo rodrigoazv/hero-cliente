@@ -12,7 +12,7 @@ export const ContainerLayout = styled.div`
     width: ${(p) => p.theme.screen.md};
   }
   @media (max-width: 1000px) {
-    width: ${(p) => p.theme.screen.sm};
+    width: 100vw;
   }
 `;
 

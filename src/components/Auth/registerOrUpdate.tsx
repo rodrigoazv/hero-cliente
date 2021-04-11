@@ -30,12 +30,15 @@ const registerSchema = yup.object().shape({
   firstName: yup.string().required('Informe seu primeiro nome'),
   lastName: yup.string().required('Informe seu ultimo nome'),
   nickName: yup.string().required('Informe um nickname'),
-  password: yup.string().required('Informe uma senha '),
+  password: yup
+    .string()
+    .min(8, 'Minimo 8 characters')
+    .required('Informe uma senha '),
   birthDay: yup
     .date()
     .max(
       '2003-01-01T00:00:00.000Z',
-      'Ainda não permitimos essa idade selecione algo antes de 2003',
+      'Ainda não permitimos essa idade selecione algo antes',
     )
     .default(() => new Date())
     .required('Selecione uma data'),
@@ -50,6 +53,7 @@ interface Props {
 }
 
 const Register: React.FC<Props> = ({ isUpdate }: Props) => {
+  const dateToday = new Date();
   const dispatch = useDispatch();
   const { loading } = useSelector((state: ApplicationState) => state.notify);
   const { userData } = useSelector((state: ApplicationState) => state.user);
@@ -60,10 +64,10 @@ const Register: React.FC<Props> = ({ isUpdate }: Props) => {
     nickName: isUpdate ? userData.nickName : '',
     firstName: isUpdate ? userData.firstName : '',
     lastName: isUpdate ? userData.lastName : '',
-    birthDay: isUpdate ? userData.birthDay : new Date(),
+    birthDay: isUpdate ? userData.birthDay : dateToday,
   };
-  const register = (values: User) => {
-    dispatch(sendRegisterAction(values));
+  const register = async (values: User) => {
+    await dispatch(sendRegisterAction(values));
     if (localStorage.getItem('@authorization') !== '') {
       history.push('/home');
     }
@@ -95,7 +99,7 @@ const Register: React.FC<Props> = ({ isUpdate }: Props) => {
                 type="text"
                 name="nickName"
                 size="small"
-                label="Escolha um nickname, ex.(batman10)"
+                label="Nickname, ex.(batman10)"
                 onChange={handleChange}
                 value={values.nickName}
                 error={touched.nickName && Boolean(errors.nickName)}
@@ -155,9 +159,7 @@ const Register: React.FC<Props> = ({ isUpdate }: Props) => {
                 size="small"
                 name="password"
                 label={
-                  isUpdate
-                    ? 'Digite sua senha'
-                    : 'Escolha uma senha beeem segura'
+                  isUpdate ? 'Digite sua senha' : 'Escolha uma senha segura'
                 }
                 onChange={handleChange}
                 value={values.password}
@@ -176,7 +178,7 @@ const Register: React.FC<Props> = ({ isUpdate }: Props) => {
                 name="birthDay"
                 disabled={isUpdate}
                 id="date-picker-inline"
-                label="Selecione uma data"
+                label="Data de nascimento (+18 anos)"
                 inputVariant="outlined"
                 value={values.birthDay}
                 onChange={(value) => setFieldValue('birthDay', value)}

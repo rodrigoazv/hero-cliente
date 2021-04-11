@@ -46,7 +46,7 @@ const Login: React.FC = () => {
               type="text"
               name="email"
               size="small"
-              label="Informe seu login"
+              label="Informe seu email"
               onChange={handleChange}
               value={values.email}
               error={touched.email && Boolean(errors.email)}

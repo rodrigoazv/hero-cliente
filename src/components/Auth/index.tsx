@@ -26,9 +26,9 @@ const Labels = styled.div`
   flex-direction: column;
   align-items: center;
   width: 800px;
-  padding: 100px 0 200px 150px;
+  margin: 50px auto;
   @media (max-width: 1400px) {
-    padding: 100px 100px 100px 0;
+    margin: 50px auto;
   }
   span {
     padding: 3px;
@@ -56,6 +56,7 @@ const Logos = styled.img<PropsStyles>`
 `;
 const Main = styled.div`
   max-height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
