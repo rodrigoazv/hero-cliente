@@ -7,7 +7,10 @@ import Logo from '../../styles/assets/logo.svg';
 import Avatar from '../Common/avatar';
 import { ContainerLayout } from '../Common/container';
 import { ApplicationState } from '../../store';
-import { refetchCharComicLikeAction } from '../../store/ducks/user/actions';
+import {
+  refetchCharComicLikeAction,
+  getUserAction,
+} from '../../store/ducks/user/actions';
 
 /*
   Componentes style
@@ -34,8 +37,11 @@ const GroupAvatar = styled.div`
 
 const GroupMessage = styled.div`
   height: auto;
-  color: #fff;
+  color: ${(p) => p.theme.colors.white};
   margin: 30px 0;
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 const Logos = styled.img<PropsStyles>`
@@ -53,6 +59,7 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     if (message.successType === 'like' || message.successType === 'auth') {
       dispatch(refetchCharComicLikeAction());
+      dispatch(getUserAction());
     }
   }, [message]);
   return (

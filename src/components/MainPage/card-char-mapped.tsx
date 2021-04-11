@@ -15,10 +15,26 @@ const Content = styled.div`
   height: 100%;
   padding: 10px 0;
   height: 800px;
+  @media (max-width: 1500px) {
+    padding: 10px 20px;
+  }
 `;
 
 const PaginationStyle = styled.div`
-  margin: 10px auto 100px auto;
+  align-self: center;
+  padding: 50px 0;
+  @media (max-width: 1200px) {
+    display: block;
+    box-shadow: rgb(0 0 0 / 10%) 0px 2px 10px;
+    background: rgb(255, 255, 255);
+    transition: all 300ms ease-in-out 0s;
+    padding: 20px 0;
+    z-index: 3;
+    bottom: 0px;
+    width: 100%;
+    position: fixed;
+    left: 0p;
+  }
 `;
 
 const CardContent = styled.div`
