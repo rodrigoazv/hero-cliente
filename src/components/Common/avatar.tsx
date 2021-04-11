@@ -26,6 +26,9 @@ export const Button = styled.button`
     -moz-box-shadow: 0px 0px 18px -7px rgba(105, 222, 163, 1);
     box-shadow: 0px 0px 18px -7px rgba(105, 222, 163, 1);
   }
+  @media (max-width: 1000px) {
+    height: 80px;
+  }
 `;
 
 const DropDownContent = styled.div`

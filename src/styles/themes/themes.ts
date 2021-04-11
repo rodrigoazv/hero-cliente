@@ -109,7 +109,7 @@ export default {
   screen: {
     tiny: '280px',
     xxs: '440px',
-    xs: '540px',
+    xs: '440px',
     sm: '640px',
     md: '1007px',
     lg: '1100px',
