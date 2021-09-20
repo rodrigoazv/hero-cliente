@@ -59,6 +59,8 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     if (message.successType === 'like' || message.successType === 'auth') {
       dispatch(refetchCharComicLikeAction());
+    }
+    if (message.successType === 'auth') {
       dispatch(getUserAction());
     }
   }, [message]);

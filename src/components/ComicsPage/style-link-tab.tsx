@@ -57,7 +57,7 @@ const StyleLinkTab: React.FC<Props> = ({ type, linked }: Props) => {
     (state: ApplicationState) => state.charcomics,
   );
   useEffect(() => {
-    if (type === 'char') {
+    if (type === 'characters') {
       setData(comicsById.characters.items);
     }
     if (type === 'stories') {

@@ -54,6 +54,9 @@ export default {
   // forceCoverageMatch: [],
   preset: 'ts-jest',
 
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest',
+  },
   // A path to a module which exports an async function that is triggered once before all test suites
   // globalSetup: undefined,
 
@@ -83,7 +86,10 @@ export default {
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   // moduleNameMapper: {},
-
+  setupFilesAfterEnv: [
+    '@testing-library/react/cleanup-after-each',
+    '@testing-library/jest-dom/extend-expect',
+  ],
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
 
@@ -107,7 +113,7 @@ export default {
 
   // Reset the module registry before running each individual test
   // resetModules: false,
-
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   // A path to a custom resolver
   // resolver: undefined,
 
